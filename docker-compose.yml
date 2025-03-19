@@ -1,0 +1,56 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_DB: seletivo
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      HIKARI_CONNECTION_TIMEOUT: 40000
+      HIKARI_MAXIMUM_POOL_SIZE: 250
+      HIKARI_MINIMUM_IDLE: 20
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  minio:
+    build:
+      context: ./minio
+      dockerfile: Dockerfile
+    container_name: minio_server
+    restart: always
+    environment:
+      MINIO_ROOT_USER: admin
+      MINIO_ROOT_PASSWORD: 'sF022A-?=sZT'
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+  app:
+    build:
+      context: ./
+      dockerfile: infra/Dockerfile
+    container_name: seletivo
+    restart: always
+    depends_on:
+      - postgres
+      - minio
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/seletivo
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      MINIO_URL: http://minio:9000
+      MINIO_ACCESS_KEY: admin
+      MINIO_SECRET_KEY: 'sF022A-?=sZT'
+    ports:
+      - "8080:8080"
+
+volumes:
+  postgres_data:
+  minio_data:
