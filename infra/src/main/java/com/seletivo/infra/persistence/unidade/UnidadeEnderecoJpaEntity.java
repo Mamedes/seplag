@@ -1,14 +1,24 @@
 package com.seletivo.infra.persistence.unidade;
 
 import com.seletivo.domain.endereco.EnderecoID;
+import com.seletivo.domain.pagination.Pagination;
+import com.seletivo.domain.pagination.SearchQuery;
 import com.seletivo.domain.unidade.UnidadeEndereco;
+import com.seletivo.domain.unidade.UnidadeEnderecoGateway;
 import com.seletivo.domain.unidade.UnidadeID;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+
+
 @Entity(name = "UnidadeEndereco")
 @Table(name = "unidade_endereco")
-public class UnidadeEnderecoJpaEntity {
+@IdClass(UnidadeEnderecoJpaEntity.UnidadeEnderecoId.class)
+public class UnidadeEnderecoJpaEntity  {
     @Id
     @Column(name = "unid_id", nullable = false)
     private Long unidadeId;
@@ -27,8 +37,8 @@ public class UnidadeEnderecoJpaEntity {
 
     public static UnidadeEnderecoJpaEntity from(final UnidadeEndereco unidadeEndereco) {
         return new UnidadeEnderecoJpaEntity(
-                unidadeEndereco.getId() != null ?  unidadeEndereco.getId().getValue() : null,
-                unidadeEndereco.getEnderecoId() != null ? unidadeEndereco.getEnderecoId().getValue() : null
+                unidadeEndereco.getUnidadeId() != null ?  unidadeEndereco.getUnidadeId().getValue() : null,
+              unidadeEndereco.getEnderecoId().getValue()
         );
     }
 
@@ -54,4 +64,32 @@ public class UnidadeEnderecoJpaEntity {
     public void setEnderecoId(Long enderecoId) {
         this.enderecoId = enderecoId;
     }
+    public static class UnidadeEnderecoId implements Serializable {
+        private Long unidadeId;
+        private Long enderecoId;
+
+        public UnidadeEnderecoId() {
+        }
+
+        public UnidadeEnderecoId(Long unidadeId, Long enderecoId) {
+            this.unidadeId = unidadeId;
+            this.enderecoId = enderecoId;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            UnidadeEnderecoId that = (UnidadeEnderecoId) o;
+            return Objects.equals(unidadeId, that.unidadeId) &&
+                    Objects.equals(enderecoId, that.enderecoId);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(unidadeId, enderecoId);
+        }
+    }
+
+
 }

@@ -11,14 +11,14 @@ CREATE TABLE servidor_temporario (
 
 CREATE TABLE servidor_efetivo (
     pes_id INT PRIMARY KEY,
-    se_matricula VARCHAR(20) NOT NULL UNIQUE,
+    se_matricula VARCHAR(20) NOT NULL ,
     CONSTRAINT fk_servidor_efetivo_pessoa FOREIGN KEY (pes_id) REFERENCES pessoa (pes_id) ON DELETE CASCADE
 );
 
 CREATE TABLE unidade (
     unid_id INT PRIMARY KEY DEFAULT nextval('unidade_id_seq'),
     unid_nome VARCHAR(200) NOT NULL,
-    unid_sigla VARCHAR(20) NOT NULL UNIQUE
+    unid_sigla VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE cidade (

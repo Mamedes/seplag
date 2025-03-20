@@ -12,10 +12,10 @@ import static io.vavr.API.Try;
 
 public class DefaultCreateUnidadeUseCase extends CreateUnidadeUseCase {
 
-    private final UnidadeGateway categoryGateway;
+    private final UnidadeGateway unidadeGateway;
 
-    public DefaultCreateUnidadeUseCase(final UnidadeGateway categoryGateway) {
-        this.categoryGateway = Objects.requireNonNull(categoryGateway);
+    public DefaultCreateUnidadeUseCase(final UnidadeGateway unidadeGateway) {
+        this.unidadeGateway = Objects.requireNonNull(unidadeGateway);
     }
 
     @Override
@@ -32,7 +32,7 @@ public class DefaultCreateUnidadeUseCase extends CreateUnidadeUseCase {
     }
 
     private Either<Notification, CreateUnidadeOutput> create(final Unidade aUnidade) {
-        return Try(() -> this.categoryGateway.create(aUnidade))
+        return Try(() -> this.unidadeGateway.create(aUnidade))
                 .toEither()
                 .bimap(Notification::create, CreateUnidadeOutput::from);
     }

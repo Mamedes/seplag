@@ -2,6 +2,7 @@ package com.seletivo.domain.endereco;
 
 import com.seletivo.domain.Identifier;
 
+import java.util.List;
 import java.util.Objects;
 
 public class EnderecoID extends Identifier {

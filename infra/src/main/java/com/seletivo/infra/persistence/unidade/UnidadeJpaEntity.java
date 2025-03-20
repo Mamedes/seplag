@@ -1,8 +1,14 @@
 package com.seletivo.infra.persistence.unidade;
 
+import com.seletivo.domain.pagination.Pagination;
+import com.seletivo.domain.pagination.SearchQuery;
 import com.seletivo.domain.unidade.Unidade;
+import com.seletivo.domain.unidade.UnidadeGateway;
 import com.seletivo.domain.unidade.UnidadeID;
 import jakarta.persistence.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @Entity(name = "Unidade")
 @Table(name = "unidade")
@@ -67,4 +73,5 @@ public class UnidadeJpaEntity {
     public void setSigla(String sigla) {
         this.sigla = sigla;
     }
-}
+
+  }

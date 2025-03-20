@@ -13,7 +13,7 @@ public class EnderecoJpaEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "endereco_seq")
     @SequenceGenerator(name = "endereco_seq", sequenceName = "endereco_id_seq", allocationSize = 1)
     @Column(name = "end_id", nullable = false, updatable = false)
-    private Long id;
+    private Long enderecoId;
 
     @Column(name = "end_tipo_logradouro")
     private String tipoLogradouro;
@@ -34,7 +34,7 @@ public class EnderecoJpaEntity {
     }
 
     public EnderecoJpaEntity(final Long id, final String tipoLogradouro, final String logradouro, final Integer numero, final String bairro, final Long cidadeId) {
-        this.id = id;
+        this.enderecoId = id;
         this.tipoLogradouro = tipoLogradouro;
         this.logradouro = logradouro;
         this.numero = numero;
@@ -65,11 +65,11 @@ public class EnderecoJpaEntity {
     }
 
     public Long getId() {
-        return id;
+        return enderecoId;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.enderecoId = id;
     }
 
     public String getTipoLogradouro() {

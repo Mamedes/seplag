@@ -1,38 +1,35 @@
 package com.seletivo.domain.unidade;
 
-import com.seletivo.domain.AggregateRoot;
 import com.seletivo.domain.endereco.EnderecoID;
-import com.seletivo.domain.validation.ValidationHandler;
 
-public class UnidadeEndereco extends AggregateRoot<UnidadeID> {
-    private final EnderecoID enderecoId;
+public class UnidadeEndereco {
 
-    private UnidadeEndereco( UnidadeID unidadeId, EnderecoID enderecoId) {
-        super(unidadeId);
+    private final  EnderecoID enderecoId;
+    private final UnidadeID unidadeId;
+
+    private UnidadeEndereco( final UnidadeID unidadeId,final  EnderecoID enderecoId) {
+        this.unidadeId = unidadeId;
         this.enderecoId = enderecoId;
     }
 
-    public static UnidadeEndereco newUnidadeEndereco(UnidadeID unidadeId, EnderecoID enderecoId) {
+    public static UnidadeEndereco newUnidadeEndereco( final UnidadeID unidadeId,final EnderecoID enderecoId) {
         return new UnidadeEndereco( unidadeId, enderecoId);
     }
 
-    public static UnidadeEndereco with( final UnidadeID unidadeId, final EnderecoID enderecoId) {
+    public static UnidadeEndereco with( final UnidadeID unidadeId, final  EnderecoID enderecoId) {
         return new UnidadeEndereco( unidadeId, enderecoId);
     }
+
 
     public static UnidadeEndereco with(final UnidadeEndereco aUnidadeEndereco) {
-        return with(aUnidadeEndereco.id, aUnidadeEndereco.enderecoId);
-    }
-
-    @Override
-    public void validate(ValidationHandler handler) {
-
-    }
-    public UnidadeID getId() {
-        return id;
+        return with(aUnidadeEndereco.unidadeId, aUnidadeEndereco.enderecoId);
     }
 
     public EnderecoID getEnderecoId() {
         return enderecoId;
+    }
+
+    public UnidadeID getUnidadeId() {
+        return unidadeId;
     }
 }
