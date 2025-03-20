@@ -2,23 +2,21 @@ package com.seletivo.domain.endereco;
 
 import com.seletivo.domain.pagination.Pagination;
 import com.seletivo.domain.pagination.SearchQuery;
-import com.seletivo.domain.pessoa.Pessoa;
-import com.seletivo.domain.pessoa.PessoaID;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface EnderecoGateway {
 
-    Pessoa create(Pessoa aPessoa);
+    Endereco create(Endereco aEndereco);
 
-    void deleteById(PessoaID anId);
+    void deleteById(EnderecoID anId);
 
-    Optional<Pessoa> findById(PessoaID anId);
+    Optional<Endereco> findById(EnderecoID anId);
 
-    Pessoa update(Pessoa aPessoa);
+    Endereco update(Endereco aEndereco);
 
-    Pagination<Pessoa> findAll(SearchQuery aQuery);
+    Pagination<Endereco> findAll(SearchQuery aQuery);
 
-    List<PessoaID> existsByIds(Iterable<PessoaID> ids);
+    List<EnderecoID> existsByIds(Iterable<EnderecoID> ids);
 }

@@ -20,6 +20,7 @@ public class DefaultCreateUnidadeEnderecoUseCase extends CreateUnidadeEnderecoUs
 
     @Override
     public Either<Notification, CreateUnidadeEnderecoOutput> execute(final CreateUnidadeEnderecoCommand aCommand) {
+
         final var endereco = aCommand.enderecoId();
         final var unidadeId = aCommand.unidadeID();
 
