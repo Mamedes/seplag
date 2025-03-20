@@ -1,4 +1,4 @@
-CREATE SEQUENCE IF NOT EXISTS foto_pessoa_id_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE IF NOT EXISTS foto_pessoa_id_seq START WITH 2000 INCREMENT BY 1;
 
 CREATE TABLE foto_pessoa (
     fp_id INT PRIMARY KEY DEFAULT nextval('foto_pessoa_id_seq'),
