@@ -7,7 +7,6 @@ import com.seletivo.application.pessoa.fetch.get.GetPessoaByIdUseCase;
 import com.seletivo.domain.validation.handler.Notification;
 import com.seletivo.infra.controller.pessoa.presenters.PessoaApiPresenter;
 import com.seletivo.infra.controller.pessoa.request.CreatePessoaRequest;
-import com.seletivo.infra.controller.unidade.PessoaResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,7 +32,7 @@ public class PessoaController implements PessoaAPI {
 
         final Function<Notification, ResponseEntity<?>> onError = notification -> ResponseEntity.unprocessableEntity().body(notification);
 
-        final Function<CreatePessoaOutput, ResponseEntity<?>> onSuccess = output -> ResponseEntity.created(URI.create("/pessoa" + output.id())).body(output);
+        final Function<CreatePessoaOutput, ResponseEntity<?>> onSuccess = output -> ResponseEntity.created(URI.create("/pessoa/" + output.id())).body(output);
 
         return this.createPessoaUseCase.execute(aCommand).fold(onError, onSuccess);
     }

@@ -2,23 +2,23 @@ package com.seletivo.domain.servidor;
 
 import com.seletivo.domain.pagination.Pagination;
 import com.seletivo.domain.pagination.SearchQuery;
-import com.seletivo.domain.pessoa.Pessoa;
 import com.seletivo.domain.pessoa.PessoaID;
+
 
 import java.util.List;
 import java.util.Optional;
 
 public interface ServidorEfetivoGateway {
 
-    Pessoa create(Pessoa aPessoa);
+    ServidorEfetivo create(ServidorEfetivo aServidorEfetivo);
 
     void deleteById(PessoaID anId);
 
-    Optional<Pessoa> findById(PessoaID anId);
+    Optional<ServidorEfetivo> findById(PessoaID anId);
 
-    Pessoa update(Pessoa aPessoa);
+    ServidorEfetivo update(ServidorEfetivo aServidorEfetivo);
 
-    Pagination<Pessoa> findAll(SearchQuery aQuery);
+    Pagination<ServidorEfetivo> findAll(SearchQuery aQuery);
 
     List<PessoaID> existsByIds(Iterable<PessoaID> ids);
 }

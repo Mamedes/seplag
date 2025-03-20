@@ -3,7 +3,6 @@ package com.seletivo.infra.controller.pessoa;
 
 
 import com.seletivo.infra.controller.pessoa.request.CreatePessoaRequest;
-import com.seletivo.infra.controller.unidade.PessoaResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;

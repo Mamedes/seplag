@@ -14,10 +14,10 @@ import static io.vavr.API.Try;
 
 public class DefaultCreatePessoaUseCase extends CreatePessoaUseCase {
 
-    private final PessoaGateway categoryGateway;
+    private final PessoaGateway pessoaGateway;
 
-    public DefaultCreatePessoaUseCase(final PessoaGateway categoryGateway) {
-        this.categoryGateway = Objects.requireNonNull(categoryGateway);
+    public DefaultCreatePessoaUseCase(final PessoaGateway pessoaGateway) {
+        this.pessoaGateway = Objects.requireNonNull(pessoaGateway);
     }
 
     @Override
@@ -37,7 +37,7 @@ public class DefaultCreatePessoaUseCase extends CreatePessoaUseCase {
     }
 
     private Either<Notification, CreatePessoaOutput> create(final Pessoa aPessoa) {
-        return Try(() -> this.categoryGateway.create(aPessoa))
+        return Try(() -> this.pessoaGateway.create(aPessoa))
                 .toEither()
                 .bimap(Notification::create, CreatePessoaOutput::from);
     }

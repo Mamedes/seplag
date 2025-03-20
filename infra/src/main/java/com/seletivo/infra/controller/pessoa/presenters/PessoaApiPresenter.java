@@ -3,7 +3,7 @@ package com.seletivo.infra.controller.pessoa.presenters;
 
 import com.seletivo.application.pessoa.fetch.PessoaOutput;
 import com.seletivo.infra.controller.pessoa.request.PessoaListResponse;
-import com.seletivo.infra.controller.unidade.PessoaResponse;
+import com.seletivo.infra.controller.pessoa.PessoaResponse;
 
 public interface PessoaApiPresenter {
 

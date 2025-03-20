@@ -1,13 +1,13 @@
-package com.seletivo.infra.controller.pessoa.request;
+package com.seletivo.infra.controller.pessoa;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDate;
 
-public record CreatePessoaRequest(
+public record PessoaResponse(
+        @JsonProperty("id") Long id,
         @JsonProperty("nome") String nome,
-        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")  LocalDate dataNascimento,
+        @JsonProperty("dataNascimento") LocalDate data_nascimento,
         @JsonProperty("sexo") String sexo,
         @JsonProperty("nomeMae") String nomeMae,
         @JsonProperty("nomePai") String nomePai
