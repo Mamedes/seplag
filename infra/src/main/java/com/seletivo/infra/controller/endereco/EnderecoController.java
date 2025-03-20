@@ -47,7 +47,7 @@ public class EnderecoController implements EnderecoAPI {
 
         final Function<Notification, ResponseEntity<?>> onError = notification -> ResponseEntity.unprocessableEntity().body(notification);
 
-        final Function<CreateEnderecoOutput, ResponseEntity<?>> onSuccess = output -> ResponseEntity.created(URI.create("/endereco" + output.id())).body(output);
+        final Function<CreateEnderecoOutput, ResponseEntity<?>> onSuccess = output -> ResponseEntity.created(URI.create("/endereco/" + output.id())).body(output);
 
         return this.createEnderecoUseCase.execute(aCommand).fold(onError, onSuccess);
     }
