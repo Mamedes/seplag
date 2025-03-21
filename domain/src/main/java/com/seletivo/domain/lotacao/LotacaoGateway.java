@@ -2,23 +2,22 @@ package com.seletivo.domain.lotacao;
 
 import com.seletivo.domain.pagination.Pagination;
 import com.seletivo.domain.pagination.SearchQuery;
-import com.seletivo.domain.pessoa.Pessoa;
-import com.seletivo.domain.pessoa.PessoaID;
+
 
 import java.util.List;
 import java.util.Optional;
 
 public interface LotacaoGateway {
 
-    Pessoa create(Pessoa aPessoa);
+    Lotacao create(Lotacao aLotacao);
 
-    void deleteById(PessoaID anId);
+    void deleteById(LotacaoID anId);
 
-    Optional<Pessoa> findById(PessoaID anId);
+    Optional<Lotacao> findById(LotacaoID anId);
 
-    Pessoa update(Pessoa aPessoa);
+    Lotacao update(Lotacao aLotacao);
 
-    Pagination<Pessoa> findAll(SearchQuery aQuery);
+    Pagination<Lotacao> findAll(SearchQuery aQuery);
 
-    List<PessoaID> existsByIds(Iterable<PessoaID> ids);
+    List<LotacaoID> existsByIds(Iterable<LotacaoID> ids);
 }
