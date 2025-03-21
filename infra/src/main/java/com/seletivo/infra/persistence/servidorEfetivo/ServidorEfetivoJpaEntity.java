@@ -1,7 +1,7 @@
-package com.seletivo.infra.persistence.servidor;
+package com.seletivo.infra.persistence.servidorEfetivo;
 
 import com.seletivo.domain.pessoa.PessoaID;
-import com.seletivo.domain.servidor.ServidorEfetivo;
+import com.seletivo.domain.servidorEfetivo.ServidorEfetivo;
 import jakarta.persistence.*;
 
 @Entity(name = "ServidorEfetivo")

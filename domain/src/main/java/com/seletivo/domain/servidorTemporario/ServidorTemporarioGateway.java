@@ -1,8 +1,7 @@
-package com.seletivo.domain.servidor;
+package com.seletivo.domain.servidorTemporario;
 
 import com.seletivo.domain.pagination.Pagination;
 import com.seletivo.domain.pagination.SearchQuery;
-import com.seletivo.domain.pessoa.Pessoa;
 import com.seletivo.domain.pessoa.PessoaID;
 
 import java.util.List;
@@ -10,15 +9,15 @@ import java.util.Optional;
 
 public interface ServidorTemporarioGateway {
 
-    Pessoa create(Pessoa aPessoa);
+    ServidorTemporario create(ServidorTemporario aPessoa);
 
     void deleteById(PessoaID anId);
 
-    Optional<Pessoa> findById(PessoaID anId);
+    Optional<ServidorTemporario> findById(PessoaID anId);
 
-    Pessoa update(Pessoa aPessoa);
+    ServidorTemporario update(ServidorTemporario aPessoa);
 
-    Pagination<Pessoa> findAll(SearchQuery aQuery);
+    Pagination<ServidorTemporario> findAll(SearchQuery aQuery);
 
     List<PessoaID> existsByIds(Iterable<PessoaID> ids);
 }

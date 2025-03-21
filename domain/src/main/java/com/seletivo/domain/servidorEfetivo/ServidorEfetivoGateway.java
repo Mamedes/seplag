@@ -1,4 +1,4 @@
-package com.seletivo.domain.servidor;
+package com.seletivo.domain.servidorEfetivo;
 
 import com.seletivo.domain.pagination.Pagination;
 import com.seletivo.domain.pagination.SearchQuery;

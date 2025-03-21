@@ -7,6 +7,7 @@ import java.time.LocalDate;
 
 public record CreatePessoaRequest(
         @JsonProperty("nome") String nome,
+        @JsonProperty("dataNascimento")
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")  LocalDate dataNascimento,
         @JsonProperty("sexo") String sexo,
         @JsonProperty("nomeMae") String nomeMae,

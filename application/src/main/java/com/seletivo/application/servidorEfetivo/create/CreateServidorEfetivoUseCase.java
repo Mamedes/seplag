@@ -1,4 +1,4 @@
-package com.seletivo.application.servidor.create;
+package com.seletivo.application.servidorEfetivo.create;
 
 import com.seletivo.application.UseCase;
 import com.seletivo.domain.validation.handler.Notification;

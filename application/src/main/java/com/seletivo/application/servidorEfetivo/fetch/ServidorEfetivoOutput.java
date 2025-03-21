@@ -1,8 +1,8 @@
-package com.seletivo.application.servidor.fetch;
+package com.seletivo.application.servidorEfetivo.fetch;
 
 import com.seletivo.application.pessoa.fetch.PessoaOutput;
 import com.seletivo.domain.pessoa.PessoaID;
-import com.seletivo.domain.servidor.ServidorEfetivo;
+import com.seletivo.domain.servidorEfetivo.ServidorEfetivo;
 
 public record ServidorEfetivoOutput(
         PessoaID id,

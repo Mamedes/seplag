@@ -1,11 +1,11 @@
 package com.seletivo.infra.configuration.usecases;
 
-import com.seletivo.application.servidor.create.CreateServidorEfetivoUseCase;
-import com.seletivo.application.servidor.create.DefaultCreateServidorEfetivoUseCase;
-import com.seletivo.application.servidor.fetch.DefaultGetServidorEfetivoByIdUseCase;
-import com.seletivo.application.servidor.fetch.GetServidorEfetivoByIdUseCase;
+import com.seletivo.application.servidorEfetivo.create.CreateServidorEfetivoUseCase;
+import com.seletivo.application.servidorEfetivo.create.DefaultCreateServidorEfetivoUseCase;
+import com.seletivo.application.servidorEfetivo.fetch.DefaultGetServidorEfetivoByIdUseCase;
+import com.seletivo.application.servidorEfetivo.fetch.GetServidorEfetivoByIdUseCase;
 import com.seletivo.domain.pessoa.PessoaGateway;
-import com.seletivo.domain.servidor.ServidorEfetivoGateway;
+import com.seletivo.domain.servidorEfetivo.ServidorEfetivoGateway;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

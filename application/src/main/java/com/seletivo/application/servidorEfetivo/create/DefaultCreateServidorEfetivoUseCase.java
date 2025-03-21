@@ -1,9 +1,9 @@
-package com.seletivo.application.servidor.create;
+package com.seletivo.application.servidorEfetivo.create;
 
 import com.seletivo.domain.pessoa.Pessoa;
 import com.seletivo.domain.pessoa.PessoaGateway;
-import com.seletivo.domain.servidor.ServidorEfetivo;
-import com.seletivo.domain.servidor.ServidorEfetivoGateway;
+import com.seletivo.domain.servidorEfetivo.ServidorEfetivo;
+import com.seletivo.domain.servidorEfetivo.ServidorEfetivoGateway;
 import com.seletivo.domain.validation.handler.Notification;
 import io.vavr.control.Either;
 

@@ -1,7 +1,7 @@
-package com.seletivo.infra.persistence.servidor;
+package com.seletivo.infra.persistence.servidorTemporario;
 
 import com.seletivo.domain.pessoa.PessoaID;
-import com.seletivo.domain.servidor.ServidorTemporario;
+import com.seletivo.domain.servidorTemporario.ServidorTemporario;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;

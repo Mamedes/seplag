@@ -1,4 +1,4 @@
-package com.seletivo.application.servidor.fetch;
+package com.seletivo.application.servidorEfetivo.fetch;
 
 import java.util.Objects;
 import java.util.function.Supplier;
@@ -6,8 +6,8 @@ import com.seletivo.application.pessoa.fetch.PessoaOutput;
 import com.seletivo.domain.exceptions.NotFoundException;
 import com.seletivo.domain.pessoa.PessoaGateway;
 import com.seletivo.domain.pessoa.PessoaID;
-import com.seletivo.domain.servidor.ServidorEfetivo;
-import com.seletivo.domain.servidor.ServidorEfetivoGateway;
+import com.seletivo.domain.servidorEfetivo.ServidorEfetivo;
+import com.seletivo.domain.servidorEfetivo.ServidorEfetivoGateway;
 
 public class DefaultGetServidorEfetivoByIdUseCase extends GetServidorEfetivoByIdUseCase {
 

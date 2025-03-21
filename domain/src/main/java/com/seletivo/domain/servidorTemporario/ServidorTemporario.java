@@ -1,7 +1,6 @@
-package com.seletivo.domain.servidor;
+package com.seletivo.domain.servidorTemporario;
 
 import com.seletivo.domain.AggregateRoot;
-import com.seletivo.domain.pessoa.Pessoa;
 import com.seletivo.domain.pessoa.PessoaID;
 import com.seletivo.domain.validation.ValidationHandler;
 

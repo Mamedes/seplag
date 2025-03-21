@@ -1,7 +1,7 @@
-package com.seletivo.application.servidor.create;
+package com.seletivo.application.servidorEfetivo.create;
 
 
-import com.seletivo.domain.servidor.ServidorEfetivo;
+import com.seletivo.domain.servidorEfetivo.ServidorEfetivo;
 
 public record CreateServidorEfetivoOutput(
         Long id

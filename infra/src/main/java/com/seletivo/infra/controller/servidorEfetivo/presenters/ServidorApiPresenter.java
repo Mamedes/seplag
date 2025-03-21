@@ -1,7 +1,7 @@
 package com.seletivo.infra.controller.servidorEfetivo.presenters;
 
 
-import com.seletivo.application.servidor.fetch.ServidorEfetivoOutput;
+import com.seletivo.application.servidorEfetivo.fetch.ServidorEfetivoOutput;
 import com.seletivo.infra.controller.pessoa.PessoaResponse;
 import com.seletivo.infra.controller.servidorEfetivo.response.ServidorEfetivoResponse;
 

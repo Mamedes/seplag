@@ -1,4 +1,4 @@
-package com.seletivo.application.servidor.fetch;
+package com.seletivo.application.servidorEfetivo.fetch;
 
 import com.seletivo.application.UseCase;
 

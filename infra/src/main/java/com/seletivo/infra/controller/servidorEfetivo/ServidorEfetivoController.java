@@ -1,10 +1,10 @@
 package com.seletivo.infra.controller.servidorEfetivo;
 
 import com.seletivo.application.pessoa.create.CreatePessoaCommand;
-import com.seletivo.application.servidor.create.CreateServidorEfetivoCommand;
-import com.seletivo.application.servidor.create.CreateServidorEfetivoOutput;
-import com.seletivo.application.servidor.create.CreateServidorEfetivoUseCase;
-import com.seletivo.application.servidor.fetch.GetServidorEfetivoByIdUseCase;
+import com.seletivo.application.servidorEfetivo.create.CreateServidorEfetivoCommand;
+import com.seletivo.application.servidorEfetivo.create.CreateServidorEfetivoOutput;
+import com.seletivo.application.servidorEfetivo.create.CreateServidorEfetivoUseCase;
+import com.seletivo.application.servidorEfetivo.fetch.GetServidorEfetivoByIdUseCase;
 import com.seletivo.domain.validation.handler.Notification;
 import com.seletivo.infra.controller.servidorEfetivo.presenters.ServidorApiPresenter;
 import com.seletivo.infra.controller.servidorEfetivo.request.CreateServidorEfetivoRequest;

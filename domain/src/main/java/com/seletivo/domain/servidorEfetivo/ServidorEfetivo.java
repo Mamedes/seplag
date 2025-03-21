@@ -1,4 +1,4 @@
-package com.seletivo.domain.servidor;
+package com.seletivo.domain.servidorEfetivo;
 
 import com.seletivo.domain.AggregateRoot;
 import com.seletivo.domain.pessoa.PessoaID;
