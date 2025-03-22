@@ -6,14 +6,14 @@ import com.seletivo.domain.validation.ValidationHandler;
 
 import java.time.LocalDate;
 
-public class FotoPessoa extends AggregateRoot<FotoID> implements Cloneable {
+public class FotoPessoa extends AggregateRoot<FotoPessoaID> implements Cloneable {
     private final PessoaID pessoaID;
     private final LocalDate data;
     private final String bucket;
     private final String hash;
 
-    public FotoPessoa(final FotoID FotoID,  final PessoaID pessoaID,  LocalDate data, final String bucket,  final String hash) {
-        super(FotoID);
+    public FotoPessoa(final FotoPessoaID FotoPessoaID, final PessoaID pessoaID, LocalDate data, final String bucket, final String hash) {
+        super(FotoPessoaID);
         this.pessoaID = pessoaID;
         this.data = data;
         this.bucket = bucket;
@@ -24,8 +24,8 @@ public class FotoPessoa extends AggregateRoot<FotoID> implements Cloneable {
         return new FotoPessoa(null, pessoaID, data, bucket, hash);
     }
 
-    public static FotoPessoa with(final FotoID fotoID, final PessoaID pessoaID, final LocalDate data, final String bucket, final String hash) {
-        return new FotoPessoa(fotoID, pessoaID, data, bucket, hash);
+    public static FotoPessoa with(final FotoPessoaID fotoPessoaID, final PessoaID pessoaID, final LocalDate data, final String bucket, final String hash) {
+        return new FotoPessoa(fotoPessoaID, pessoaID, data, bucket, hash);
     }
 
     public static FotoPessoa with(final FotoPessoa aFotoPessoa) {
@@ -37,7 +37,7 @@ public class FotoPessoa extends AggregateRoot<FotoID> implements Cloneable {
 
     }
 
-    public FotoID getId() {
+    public FotoPessoaID getId() {
         return id;
     }
 

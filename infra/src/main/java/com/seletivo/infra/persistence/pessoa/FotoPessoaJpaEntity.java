@@ -1,7 +1,7 @@
 package com.seletivo.infra.persistence.pessoa;
 
 
-import com.seletivo.domain.pessoa.FotoID;
+import com.seletivo.domain.pessoa.FotoPessoaID;
 import com.seletivo.domain.pessoa.FotoPessoa;
 import com.seletivo.domain.pessoa.PessoaID;
 import jakarta.persistence.*;
@@ -16,19 +16,19 @@ public class FotoPessoaJpaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "foto_pessoa_seq")
     @SequenceGenerator(name = "foto_pessoa_seq", sequenceName = "foto_pessoa_id_seq", allocationSize = 1)
-    @Column(name = "fot_id", nullable = false, updatable = false)
+    @Column(name = "fp_id", nullable = false, updatable = false)
     private Long id;
 
     @Column(name = "pes_id", nullable = false)
     private Long pessoaId;
 
-    @Column(name = "fot_data", nullable = false)
+    @Column(name = "fp_data", nullable = false)
     private LocalDate data;
 
-    @Column(name = "fot_bucket", nullable = false)
+    @Column(name = "fp_bucket", nullable = false)
     private String bucket;
 
-    @Column(name = "fot_hash", nullable = false)
+    @Column(name = "fp_hash", nullable = false)
     private String hash;
 
     public FotoPessoaJpaEntity() {
@@ -54,7 +54,7 @@ public class FotoPessoaJpaEntity {
 
     public FotoPessoa toAggregate() {
         return FotoPessoa.with(
-                getId() != null ? FotoID.from(getId()) : null,
+                getId() != null ? FotoPessoaID.from(getId()) : null,
                 getPessoaId() != null ? PessoaID.from(getPessoaId()) : null,
                 getData(),
                 getBucket(),

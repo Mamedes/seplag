@@ -1,7 +1,5 @@
 package com.seletivo.application.pessoa.create;
 
-
-
 import com.seletivo.domain.pessoa.Pessoa;
 import com.seletivo.domain.pessoa.PessoaGateway;
 import com.seletivo.domain.validation.handler.Notification;

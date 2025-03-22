@@ -23,7 +23,6 @@ public class DefaultCreateServidorEfetivoUseCase extends CreateServidorEfetivoUs
         this.pessoaGateway = Objects.requireNonNull(pessoaGateway);
     }
 
-
     @Override
     public Either<Notification, CreateServidorEfetivoOutput> execute(final CreateServidorEfetivoCommand aCommand) {
         final var matricula = aCommand.matricula();
