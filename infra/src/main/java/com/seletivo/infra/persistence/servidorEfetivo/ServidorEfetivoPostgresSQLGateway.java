@@ -5,12 +5,19 @@ import com.seletivo.domain.pagination.SearchQuery;
 import com.seletivo.domain.pessoa.PessoaID;
 import com.seletivo.domain.servidorEfetivo.ServidorEfetivo;
 import com.seletivo.domain.servidorEfetivo.ServidorEfetivoGateway;
+import com.seletivo.domain.servidorEfetivo.ServidorEfetivoPorUnidade;
+import com.seletivo.domain.servidorEfetivo.ServidorEnderecoDomain;
 import com.seletivo.infra.utils.SpecificationUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Component
@@ -52,12 +59,72 @@ public class ServidorEfetivoPostgresSQLGateway implements ServidorEfetivoGateway
         return List.of();
     }
 
-    private ServidorEfetivo save(final ServidorEfetivo aServidorEfetivo) {
+    @Override
+    public Pagination<ServidorEnderecoDomain> searchServidorEndereco(SearchQuery searchQuery) {
+        Pageable pageable = PageRequest.of(
+                searchQuery.page(),
+                searchQuery.perPage(),
+                Sort.by(Sort.Direction.fromString(searchQuery.direction()), searchQuery.sort())
+        );
+        Page<ServidorEnderecoProjection> page = repository.findServidorEnderecoByNome(searchQuery.terms(), pageable);
+
+        List<ServidorEnderecoDomain> items = page.getContent().stream()
+                .map(this::mapToDomain)
+                .collect(Collectors.toList());
+
+        return new Pagination<>(
+                page.getNumber(),
+                page.getSize(),
+                page.getTotalElements(),
+                items
+        );
+
+    }
+        private ServidorEfetivo save(final ServidorEfetivo aServidorEfetivo) {
         return this.repository.save(ServidorEfetivoJpaEntity.from(aServidorEfetivo)).toAggregate();
+    }
+
+
+
+    private ServidorEnderecoDomain mapToDomain(ServidorEnderecoProjection projection) {
+        return new ServidorEnderecoDomain(
+                projection.getNomeServidor(),
+                projection.getNomeUnidade(),
+                projection.getLogradouro(),
+                projection.getNumero(),
+                projection.getBairro()
+        );
+    }
+    @Override
+    public Pagination<ServidorEfetivoPorUnidade> findServidoresByUnidade(SearchQuery searchQuery, Long unidadeID) {
+        Pageable pageable = PageRequest.of(
+                searchQuery.page(),
+                searchQuery.perPage(),
+                Sort.by(Sort.Direction.fromString(searchQuery.direction()), searchQuery.sort())
+        );
+
+        Page<ServidorEfetivoByUnidadeProjection> page = repository.findServidoresByUnidade(searchQuery.terms(),unidadeID, pageable);
+
+        List<ServidorEfetivoPorUnidade> outputs = page.getContent().stream()
+                .map(projection -> new ServidorEfetivoPorUnidade(
+                        projection.getNome(),
+                        projection.getDataNascimento(),
+                        projection.getNomeUnidade(),
+                        projection.getBucketFoto()
+                ))
+                .collect(Collectors.toList());
+
+        return new Pagination<>(
+                page.getNumber(),
+                page.getSize(),
+                page.getTotalElements(),
+                outputs
+        );
     }
 
     private Specification<ServidorEfetivoJpaEntity> assembleSpecification(final String str) {
         final Specification<ServidorEfetivoJpaEntity> nameLike = SpecificationUtils.like("nome", str);
         return nameLike;
     }
+
 }
