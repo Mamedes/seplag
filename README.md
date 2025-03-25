@@ -7,7 +7,7 @@
 
 ```shellscript
 $ git clone https://github.com/Mamedes/seplag.git
-$ cd esocial
+$ cd seplag
 ```
 
 ### Execução
