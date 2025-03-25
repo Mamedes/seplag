@@ -1,7 +1,7 @@
 package com.seletivo.infra.configuration.usecases;
 
 import com.seletivo.application.endereco.create.CreateEnderecoUseCase;
-import com.seletivo.application.endereco.DefaultCreateEnderecoUseCase;
+import com.seletivo.application.endereco.create.DefaultCreateEnderecoUseCase;
 import com.seletivo.application.endereco.delete.DefaultDeleteEnderecoUseCase;
 import com.seletivo.application.endereco.delete.DeleteEnderecoUseCase;
 import com.seletivo.application.endereco.fetch.DefaultGetEnderecoByIdUseCase;

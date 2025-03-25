@@ -1,4 +1,4 @@
-package com.seletivo.application.unidade;
+package com.seletivo.application.unidade.create;
 
 import com.seletivo.application.UseCase;
 import com.seletivo.domain.validation.handler.Notification;

@@ -46,7 +46,7 @@ public class UnidadeEnderecoPostgresSQLGateway implements UnidadeEnderecoGateway
 
     @Override
     public UnidadeEndereco update(UnidadeEndereco aUnidadeEndereco) {
-        return null;
+        return save(aUnidadeEndereco);
     }
 
     @Override

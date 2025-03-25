@@ -1,8 +1,5 @@
-package com.seletivo.application.unidade;
+package com.seletivo.application.unidade.create;
 
-import com.seletivo.domain.endereco.EnderecoID;
-
-import java.time.LocalDate;
 import java.util.List;
 
 public record CreateUnidadeCommand(

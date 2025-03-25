@@ -1,8 +1,8 @@
 package com.seletivo.infra.configuration.usecases;
 
 
-import com.seletivo.application.unidade.CreateUnidadeUseCase;
-import com.seletivo.application.unidade.DefaultCreateUnidadeUseCase;
+import com.seletivo.application.unidade.create.CreateUnidadeUseCase;
+import com.seletivo.application.unidade.create.DefaultCreateUnidadeUseCase;
 import com.seletivo.application.unidade.fetch.DefaultGetUnidadeByIdUseCase;
 import com.seletivo.domain.endereco.EnderecoGateway;
 import com.seletivo.domain.unidade.UnidadeGateway;

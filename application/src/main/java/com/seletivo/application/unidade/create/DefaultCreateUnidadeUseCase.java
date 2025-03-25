@@ -1,4 +1,4 @@
-package com.seletivo.application.unidade;
+package com.seletivo.application.unidade.create;
 
 import com.seletivo.domain.endereco.EnderecoGateway;
 import com.seletivo.domain.endereco.EnderecoID;
@@ -37,8 +37,6 @@ public class DefaultCreateUnidadeUseCase extends CreateUnidadeUseCase {
                 .containsAll(enderecoIds)) {
             return Left(Notification.create().append(new Error("Um ou mais endereços não foram encontrados.")));
         }
-
-
 
 
         final var nome = aCommand.nome();

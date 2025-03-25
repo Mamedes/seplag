@@ -1,15 +1,13 @@
 package com.seletivo.application.endereco.create;
 
+import static io.vavr.API.Left;
+import static io.vavr.API.Try;
+import java.util.Objects;
 import com.seletivo.domain.cidade.CidadeID;
 import com.seletivo.domain.endereco.Endereco;
 import com.seletivo.domain.endereco.EnderecoGateway;
 import com.seletivo.domain.validation.handler.Notification;
 import io.vavr.control.Either;
-
-import java.util.Objects;
-
-import static io.vavr.API.Left;
-import static io.vavr.API.Try;
 
 public class DefaultCreateEnderecoUseCase extends CreateEnderecoUseCase {
 

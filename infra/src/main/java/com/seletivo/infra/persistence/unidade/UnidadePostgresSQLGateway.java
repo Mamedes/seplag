@@ -36,12 +36,12 @@ public class UnidadePostgresSQLGateway implements UnidadeGateway {
 
     @Override
     public Optional<Unidade> findById(UnidadeID anId) {
-        return this.repository.findById(anId.getValue()).map(UnidadeJpaEntity:: toAggregate);
+        return this.repository.findById(anId.getValue()).map(UnidadeJpaEntity::toAggregate);
     }
 
     @Override
     public Unidade update(Unidade aUnidade) {
-        return null;
+        return save(aUnidade);
     }
 
     @Override

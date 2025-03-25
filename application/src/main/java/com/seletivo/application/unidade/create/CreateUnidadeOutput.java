@@ -1,7 +1,6 @@
-package com.seletivo.application.unidade;
+package com.seletivo.application.unidade.create;
 
 
-import com.seletivo.domain.pessoa.Pessoa;
 import com.seletivo.domain.unidade.Unidade;
 
 public record CreateUnidadeOutput(

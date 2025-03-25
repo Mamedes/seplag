@@ -6,8 +6,8 @@ import com.seletivo.domain.pessoa.PessoaID;
 import com.seletivo.domain.validation.ValidationHandler;
 
 public class Unidade extends AggregateRoot<UnidadeID> implements Cloneable{
-    private final String nome;
-    private final String sigla;
+    private  String nome;
+    private  String sigla;
 
     public Unidade(final UnidadeID unidadeID, final String nome, final String sigla) {
         super(unidadeID);
@@ -25,7 +25,14 @@ public class Unidade extends AggregateRoot<UnidadeID> implements Cloneable{
     public static Unidade with(final Unidade aUnidade) {
         return new Unidade(aUnidade.getId(), aUnidade.nome, aUnidade.sigla);
     }
-
+    public  Unidade update(
+            final String aNome,
+            final String aSigla
+    ) {
+        this.nome = aNome;
+        this.sigla = aSigla;
+        return  this;
+    }
     @Override
     public void validate(ValidationHandler handler) {
 
