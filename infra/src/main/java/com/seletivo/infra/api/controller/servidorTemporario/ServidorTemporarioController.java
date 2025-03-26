@@ -4,6 +4,7 @@ import com.seletivo.application.pessoa.create.CreatePessoaCommand;
 import com.seletivo.application.servidorTemporario.create.CreateServidorTemporarioCommand;
 import com.seletivo.application.servidorTemporario.create.CreateServidorTemporarioOutput;
 import com.seletivo.application.servidorTemporario.create.CreateServidorTemporarioUseCase;
+import com.seletivo.application.servidorTemporario.delete.DeleteServidorTemporarioUseCase;
 import com.seletivo.application.servidorTemporario.fetch.GetServidorTemporarioByIdUseCase;
 import com.seletivo.domain.validation.handler.Notification;
 import com.seletivo.infra.api.controller.servidorTemporario.presenters.ServidorTemporarioApiPresenter;
@@ -21,36 +22,50 @@ public class ServidorTemporarioController implements ServidorTemporarioAPI {
 
     private final CreateServidorTemporarioUseCase createServidorTemporarioUseCase;
     private final GetServidorTemporarioByIdUseCase getServidorTemporarioByIdUseCase;
+    private final DeleteServidorTemporarioUseCase deleteServidorTemporarioUseCase;
 
-    public ServidorTemporarioController(final CreateServidorTemporarioUseCase createServidorTemporarioUseCase, final GetServidorTemporarioByIdUseCase getServidorTemporarioByIdUseCase) {
+    public ServidorTemporarioController(
+            final CreateServidorTemporarioUseCase createServidorTemporarioUseCase,
+            final GetServidorTemporarioByIdUseCase getServidorTemporarioByIdUseCase,
+            final DeleteServidorTemporarioUseCase deleteServidorTemporarioUseCase) {
 
-        this.createServidorTemporarioUseCase = Objects.requireNonNull(createServidorTemporarioUseCase);
-        this.getServidorTemporarioByIdUseCase = Objects.requireNonNull(getServidorTemporarioByIdUseCase);
+        this.createServidorTemporarioUseCase =
+                Objects.requireNonNull(createServidorTemporarioUseCase);
+        this.getServidorTemporarioByIdUseCase =
+                Objects.requireNonNull(getServidorTemporarioByIdUseCase);
+        this.deleteServidorTemporarioUseCase =
+                Objects.requireNonNull(deleteServidorTemporarioUseCase);
+
 
     }
 
-    public ResponseEntity<?> createServidorTemporario(final CreateServidorTemporarioRequest request) {
-        final var pessoaCommand = CreatePessoaCommand.with(
-                request.pessoa().nome(),
-                request.pessoa().dataNascimento(),
-                request.pessoa().sexo(),
-                request.pessoa().nomeMae(),
-                request.pessoa().nomePai()
-        );
+    public ResponseEntity<?> createServidorTemporario(
+            final CreateServidorTemporarioRequest request) {
+        final var pessoaCommand = CreatePessoaCommand.with(request.pessoa().nome(),
+                request.pessoa().dataNascimento(), request.pessoa().sexo(),
+                request.pessoa().nomeMae(), request.pessoa().nomePai());
 
-        final var command = CreateServidorTemporarioCommand.with(request.dataAdmissao(), request.dataDemissao(), pessoaCommand);
+        final var command = CreateServidorTemporarioCommand.with(request.dataAdmissao(),
+                request.dataDemissao(), pessoaCommand);
 
         final Function<Notification, ResponseEntity<?>> onError =
                 notification -> ResponseEntity.unprocessableEntity().body(notification);
 
         final Function<CreateServidorTemporarioOutput, ResponseEntity<?>> onSuccess =
-                output -> ResponseEntity.created(URI.create("/servidor-temporario/" + output.id())).body(output);
+                output -> ResponseEntity.created(URI.create("/servidor-temporario/" + output.id()))
+                        .body(output);
 
         return this.createServidorTemporarioUseCase.execute(command).fold(onError, onSuccess);
     }
 
     @Override
     public ServidorTemporarioResponse getById(final Long id) {
-        return ServidorTemporarioApiPresenter.present(this.getServidorTemporarioByIdUseCase.execute(id));
+        return ServidorTemporarioApiPresenter
+                .present(this.getServidorTemporarioByIdUseCase.execute(id));
+    }
+
+    @Override
+    public void deleteById(Long id) {
+       this.deleteServidorTemporarioUseCase.execute(id);
     }
 }

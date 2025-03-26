@@ -29,12 +29,16 @@ public class ServidorTemporarioPostgresSQLGateway implements ServidorTemporarioG
 
     @Override
     public void deleteById(PessoaID anId) {
-
+        final Long anIdValue = anId.getValue();
+        if (this.repository.existsById(anIdValue)) {
+            this.repository.deleteById(anIdValue);
+        }
     }
 
     @Override
     public Optional<ServidorTemporario> findById(PessoaID anId) {
-        return this.repository.findById(anId.getValue()).map(ServidorTemporarioJpaEntity:: toAggregate);
+        return this.repository.findById(anId.getValue())
+                .map(ServidorTemporarioJpaEntity::toAggregate);
     }
 
     @Override
@@ -53,11 +57,13 @@ public class ServidorTemporarioPostgresSQLGateway implements ServidorTemporarioG
     }
 
     private ServidorTemporario save(final ServidorTemporario aServidorTemporario) {
-        return this.repository.save(ServidorTemporarioJpaEntity.from(aServidorTemporario)).toAggregate();
+        return this.repository.save(ServidorTemporarioJpaEntity.from(aServidorTemporario))
+                .toAggregate();
     }
 
     private Specification<ServidorTemporarioJpaEntity> assembleSpecification(final String str) {
-        final Specification<ServidorTemporarioJpaEntity> nameLike = SpecificationUtils.like("nome", str);
+        final Specification<ServidorTemporarioJpaEntity> nameLike =
+                SpecificationUtils.like("nome", str);
         return nameLike;
     }
 }

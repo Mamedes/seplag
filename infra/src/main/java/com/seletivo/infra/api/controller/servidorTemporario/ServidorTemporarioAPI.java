@@ -5,6 +5,7 @@ import com.seletivo.infra.api.controller.servidorTemporario.response.ServidorTem
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,8 @@ public interface ServidorTemporarioAPI {
                                         description = "A validation error was thrown"),
                         @ApiResponse(responseCode = "500",
                                         description = "An internal server error was thrown"),})
-        ResponseEntity<?> createServidorTemporario(@RequestBody CreateServidorTemporarioRequest input);
+        ResponseEntity<?> createServidorTemporario(
+                        @RequestBody CreateServidorTemporarioRequest input);
 
 
         @GetMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -34,6 +36,17 @@ public interface ServidorTemporarioAPI {
                         @ApiResponse(responseCode = "500",
                                         description = "An internal server error was thrown"),})
         ServidorTemporarioResponse getById(@PathVariable(name = "id") Long id);
+
+        @DeleteMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+        @ResponseStatus(HttpStatus.NO_CONTENT)
+        @Operation(summary = "Delete a Servidor Temporario by it's identifier")
+        @ApiResponses(value = {
+                        @ApiResponse(responseCode = "204",
+                                        description = "Endereco Servidor Temporario successfully"),
+                        @ApiResponse(responseCode = "404", description = "Servidor Temporario was not found"),
+                        @ApiResponse(responseCode = "500",
+                                        description = "An internal server error was thrown"),})
+        void deleteById(@PathVariable(name = "id") Long id);
 
 
 

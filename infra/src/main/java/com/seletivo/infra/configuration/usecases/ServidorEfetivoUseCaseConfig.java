@@ -2,6 +2,8 @@ package com.seletivo.infra.configuration.usecases;
 
 import com.seletivo.application.servidorEfetivo.create.CreateServidorEfetivoUseCase;
 import com.seletivo.application.servidorEfetivo.create.DefaultCreateServidorEfetivoUseCase;
+import com.seletivo.application.servidorEfetivo.delete.DefaultDeleteServidorEfetivoUseCase;
+import com.seletivo.application.servidorEfetivo.delete.DeleteServidorEfetivoUseCase;
 import com.seletivo.application.servidorEfetivo.fetch.DefaultGetServidorEfetivoByIdUseCase;
 import com.seletivo.application.servidorEfetivo.fetch.GetServidorEfetivoByIdUseCase;
 import com.seletivo.application.servidorEfetivo.fetch.custom.DefaultListServidorEfetivoByUnidadeUseCase;
@@ -20,14 +22,15 @@ public class ServidorEfetivoUseCaseConfig {
     private final PessoaGateway pessoaGateway;
 
 
-    public ServidorEfetivoUseCaseConfig(final ServidorEfetivoGateway servidorEfetivoGateway, final PessoaGateway pessoaGateway) {
+    public ServidorEfetivoUseCaseConfig(final ServidorEfetivoGateway servidorEfetivoGateway,
+            final PessoaGateway pessoaGateway) {
         this.servidorEfetivoGateway = servidorEfetivoGateway;
-        this.pessoaGateway= pessoaGateway;
+        this.pessoaGateway = pessoaGateway;
     }
 
     @Bean
     public CreateServidorEfetivoUseCase createServidorEfetivoUseCase() {
-        return new DefaultCreateServidorEfetivoUseCase(servidorEfetivoGateway,pessoaGateway);
+        return new DefaultCreateServidorEfetivoUseCase(servidorEfetivoGateway, pessoaGateway);
     }
 
 
@@ -37,14 +40,18 @@ public class ServidorEfetivoUseCaseConfig {
     }
 
     @Bean
-    public SearchServidorEnderecoUseCase SearchServidorEnderecoUseCase () {
+    public SearchServidorEnderecoUseCase SearchServidorEnderecoUseCase() {
         return new DefaultSearchServidorEnderecoUseCase(servidorEfetivoGateway);
     }
 
     @Bean
-    public ListServidorEfetivoByUnidadeUseCase SearchServidorEfetivoByUnidadeUseCase () {
+    public ListServidorEfetivoByUnidadeUseCase SearchServidorEfetivoByUnidadeUseCase() {
         return new DefaultListServidorEfetivoByUnidadeUseCase(servidorEfetivoGateway);
     }
 
+    @Bean
+    public DeleteServidorEfetivoUseCase deleteServidorEfetivoByUnidadeUseCase() {
+        return new DefaultDeleteServidorEfetivoUseCase(servidorEfetivoGateway);
+    }
 
 }
