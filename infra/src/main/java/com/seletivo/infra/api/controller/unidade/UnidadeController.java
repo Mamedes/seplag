@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.seletivo.application.unidade.create.CreateUnidadeCommand;
 import com.seletivo.application.unidade.create.CreateUnidadeOutput;
 import com.seletivo.application.unidade.create.CreateUnidadeUseCase;
+import com.seletivo.application.unidade.delete.DeleteUnidadeUseCase;
 import com.seletivo.application.unidade.fetch.GetUnidadeByIdUseCase;
 import com.seletivo.application.unidade.unidadeEndereco.CreateUnidadeEnderecoCommand;
 import com.seletivo.application.unidade.unidadeEndereco.CreateUnidadeEnderecoUseCase;
@@ -29,16 +30,19 @@ public class UnidadeController implements UnidadeAPI {
     private final GetUnidadeByIdUseCase getUnidadeByIdUseCase;
     private final CreateUnidadeEnderecoUseCase createUnidadeEnderecoUseCase;
     private final UpdateUnidadeUseCase updateUnidadeUseCase;
+    private final DeleteUnidadeUseCase deleteUnidadeUseCase;
 
 
     public UnidadeController(final CreateUnidadeUseCase createUnidadeUseCase,
             final GetUnidadeByIdUseCase getUnidadeByIdUseCase,
             final CreateUnidadeEnderecoUseCase createUnidadeEnderecoUseCase,
-            final UpdateUnidadeUseCase updateUnidadeUseCase) {
+            final UpdateUnidadeUseCase updateUnidadeUseCase,
+            final DeleteUnidadeUseCase deleteUnidadeUseCase) {
         this.createUnidadeEnderecoUseCase = Objects.requireNonNull(createUnidadeEnderecoUseCase);
         this.createUnidadeUseCase = Objects.requireNonNull(createUnidadeUseCase);
         this.getUnidadeByIdUseCase = Objects.requireNonNull(getUnidadeByIdUseCase);
         this.updateUnidadeUseCase = Objects.requireNonNull(updateUnidadeUseCase);
+        this.deleteUnidadeUseCase = Objects.requireNonNull(deleteUnidadeUseCase);
 
     }
 
@@ -83,6 +87,11 @@ public class UnidadeController implements UnidadeAPI {
         final Function<UpdateUnidadeOutput, ResponseEntity<?>> onSuccess = ResponseEntity::ok;
 
         return this.updateUnidadeUseCase.execute(aCommand).fold(onError, onSuccess);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        deleteUnidadeUseCase.execute(id);
     }
 
 }

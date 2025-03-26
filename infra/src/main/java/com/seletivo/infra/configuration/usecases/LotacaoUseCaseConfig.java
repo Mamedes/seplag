@@ -4,6 +4,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import com.seletivo.application.lotacao.create.CreateLotacaoUseCase;
 import com.seletivo.application.lotacao.create.DefaultCreateLotacaoUseCase;
+import com.seletivo.application.lotacao.delete.DefaultDeleteLotacaoCase;
+import com.seletivo.application.lotacao.delete.DeleteLotacaoUseCase;
 import com.seletivo.application.lotacao.fetch.DefaultGetLotacaoByIdUseCase;
 import com.seletivo.application.lotacao.fetch.GetLotacaoByIdUseCase;
 import com.seletivo.domain.lotacao.LotacaoGateway;
@@ -28,6 +30,10 @@ public class LotacaoUseCaseConfig {
         return new DefaultGetLotacaoByIdUseCase(lotacaoGateway);
     }
 
+    @Bean
+    public DeleteLotacaoUseCase deleteLotacaoByIdUseCase() {
+        return new DefaultDeleteLotacaoCase(lotacaoGateway);
+    }
 
 
 }

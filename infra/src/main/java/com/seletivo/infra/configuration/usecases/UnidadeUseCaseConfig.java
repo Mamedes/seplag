@@ -1,9 +1,15 @@
 package com.seletivo.infra.configuration.usecases;
 
 
+import com.seletivo.application.endereco.update.UpdateEnderecoUseCase;
 import com.seletivo.application.unidade.create.CreateUnidadeUseCase;
 import com.seletivo.application.unidade.create.DefaultCreateUnidadeUseCase;
+import com.seletivo.application.unidade.delete.DefaultDeleteUnidadeUseCase;
+import com.seletivo.application.unidade.delete.DeleteUnidadeUseCase;
 import com.seletivo.application.unidade.fetch.DefaultGetUnidadeByIdUseCase;
+import com.seletivo.application.unidade.fetch.GetUnidadeByIdUseCase;
+import com.seletivo.application.unidade.update.DefaultUpdateUnidadeUseCase;
+import com.seletivo.application.unidade.update.UpdateUnidadeUseCase;
 import com.seletivo.domain.endereco.EnderecoGateway;
 import com.seletivo.domain.unidade.UnidadeGateway;
 import org.springframework.context.annotation.Bean;
@@ -13,11 +19,12 @@ import org.springframework.context.annotation.Configuration;
 public class UnidadeUseCaseConfig {
 
     private final UnidadeGateway unidadeGateway;
-    private  final EnderecoGateway enderecoGateway;
+    private final EnderecoGateway enderecoGateway;
 
-    public UnidadeUseCaseConfig(final UnidadeGateway unidadeGateway,final EnderecoGateway enderecoGateway) {
+    public UnidadeUseCaseConfig(final UnidadeGateway unidadeGateway,
+            final EnderecoGateway enderecoGateway) {
         this.unidadeGateway = unidadeGateway;
-        this.enderecoGateway =enderecoGateway;
+        this.enderecoGateway = enderecoGateway;
     }
 
     @Bean
@@ -26,7 +33,19 @@ public class UnidadeUseCaseConfig {
     }
 
     @Bean
-    public DefaultGetUnidadeByIdUseCase getUnidadeByIdUseCase(){return  new DefaultGetUnidadeByIdUseCase(unidadeGateway);
+    public GetUnidadeByIdUseCase getUnidadeByIdUseCase() {
+        return new DefaultGetUnidadeByIdUseCase(unidadeGateway);
+    }
+
+    @Bean
+    public UpdateUnidadeUseCase UpdateUnidadeByIdUseCase() {
+        return new DefaultUpdateUnidadeUseCase(unidadeGateway, enderecoGateway);
+    }
+
+    @Bean
+    public DeleteUnidadeUseCase deleteUnidadeEnderecoUseCase() {
+        return new DefaultDeleteUnidadeUseCase(unidadeGateway);
+
     }
 
 

@@ -31,6 +31,10 @@ public class UnidadePostgresSQLGateway implements UnidadeGateway {
 
     @Override
     public void deleteById(UnidadeID anId) {
+        final Long anIdValue = anId.getValue();
+        if (this.repository.existsById(anIdValue)) {
+            this.repository.deleteById(anIdValue);
+        }
 
     }
 

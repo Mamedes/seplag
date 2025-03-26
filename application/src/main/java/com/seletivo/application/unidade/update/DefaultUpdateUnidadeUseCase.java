@@ -1,5 +1,5 @@
 package com.seletivo.application.unidade.update;
-import com.seletivo.domain.cidade.CidadeID;
+
 import com.seletivo.domain.endereco.EnderecoGateway;
 import com.seletivo.domain.exceptions.DomainException;
 import com.seletivo.domain.exceptions.NotFoundException;
