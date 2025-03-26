@@ -1,4 +1,4 @@
-package com.seletivo.application.unidade.fetch;
+package com.seletivo.application.unidade.fetch.get;
 
 import com.seletivo.domain.unidade.Unidade;
 import com.seletivo.domain.unidade.UnidadeID;

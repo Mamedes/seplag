@@ -1,9 +1,9 @@
 package com.seletivo.infra.api.controller.unidade.Presenter;
 
-
-import com.seletivo.application.unidade.fetch.UnidadeOutput;
-import com.seletivo.infra.api.controller.unidade.request.UnidadeListResponse;
-import com.seletivo.infra.api.controller.unidade.request.UnidadeResponse;
+import com.seletivo.application.unidade.fetch.get.UnidadeOutput;
+import com.seletivo.application.unidade.fetch.list.UnidadeListOutput;
+import com.seletivo.infra.api.controller.unidade.response.UnidadeListResponse;
+import com.seletivo.infra.api.controller.unidade.response.UnidadeResponse;
 
 public interface UnidadeApiPresenter {
 
@@ -15,11 +15,11 @@ public interface UnidadeApiPresenter {
         );
     }
 
-    static UnidadeListResponse present(final UnidadeListResponse output) {
+    static UnidadeListResponse present(final UnidadeListOutput output) {
         return new UnidadeListResponse(
-                output.id(),
+                output.id().getValue(),
                 output.nome(),
                 output.sigla()
         );
     }
-}
+ }

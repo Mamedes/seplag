@@ -8,6 +8,8 @@ import com.seletivo.domain.unidade.Unidade;
 import com.seletivo.domain.unidade.UnidadeGateway;
 import com.seletivo.domain.unidade.UnidadeID;
 import com.seletivo.infra.utils.SpecificationUtils;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 
@@ -50,7 +52,26 @@ public class UnidadePostgresSQLGateway implements UnidadeGateway {
 
     @Override
     public Pagination<Unidade> findAll(SearchQuery aQuery) {
-        return null;
+        final var page = PageRequest.of(
+                aQuery.page(),
+                aQuery.perPage(),
+                Sort.by(Sort.Direction.fromString(aQuery.direction()), aQuery.sort())
+        );
+
+        final var specifications = Optional.ofNullable(aQuery.terms())
+                .filter(str -> !str.isBlank())
+                .map(this::assembleSpecification)
+                .orElse(null);
+
+        final var pageResult =
+                this.repository.findAll(Specification.where(specifications), page);
+
+        return new Pagination<>(
+                pageResult.getNumber(),
+                pageResult.getSize(),
+                pageResult.getTotalElements(),
+                pageResult.map(UnidadeJpaEntity::toAggregate).toList()
+        );
     }
 
     @Override
