@@ -31,6 +31,9 @@ public class ServidorListByUnidadeApiPresenter {
                             .object(output.bucketFoto())
                             .expiry(5, TimeUnit.MINUTES)
                             .build());
+            if (presignedUrl != null) {
+                presignedUrl = presignedUrl.replace("http://minio:9000", "http://localhost:9003");
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

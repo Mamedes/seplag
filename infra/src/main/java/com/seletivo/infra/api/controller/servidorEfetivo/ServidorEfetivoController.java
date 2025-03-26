@@ -86,8 +86,7 @@ public class ServidorEfetivoController implements ServidorEfetivoAPI {
     }
 
     @Override
-    public Pagination<ServidorEfetivoByUnidadeResponse> listServidoresByUnidade( // Alterado o tipo
-                                                                                 // de retorno
+    public Pagination<ServidorEfetivoByUnidadeResponse> listServidoresByUnidade(
             Long id, final String nome, final int page, final int perPage, final String sort,
             final String direction) {
         final SearchQuery searchQuery = new SearchQuery(page, perPage, nome, sort, direction);

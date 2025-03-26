@@ -28,10 +28,13 @@ public class FotoPessoaApiPresenter {
                             .method(Method.GET)
                             .bucket(minioConfig.getBucketName())
                             .object(output.bucket())
-                            .expiry(5, TimeUnit.MINUTES) // 5 minutos de expiração
+                            .expiry(5, TimeUnit.MINUTES)
                             .build());
+            if (presignedUrl != null) {
+                presignedUrl = presignedUrl.replace("http://minio:9000", "http://localhost:9003/minio");
+            }
+            System.out.println(presignedUrl);
         } catch (Exception e) {
-            // Lidar com a exceção, por exemplo, logar o erro ou lançar uma exceção personalizada
             e.printStackTrace();
         }
 
