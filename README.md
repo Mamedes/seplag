@@ -23,5 +23,5 @@ docker-compose up
 3. Acesse  `Swagger `
 
 ```shellscript
-`http://localhost:8080/swagger-ui/index.html
+http://localhost:8080/swagger-ui/index.html
 ```
