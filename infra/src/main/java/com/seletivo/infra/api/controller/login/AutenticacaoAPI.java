@@ -1,6 +1,7 @@
 package com.seletivo.infra.api.controller.login;
 
 
+import com.seletivo.infra.api.controller.login.request.LoginRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping(value = "auth")
-@Tag(name = "Autenticação")
+@Tag(name = "1. Autenticação", description = "Gerenciamento de token")
 public interface
 
 

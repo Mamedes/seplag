@@ -2,7 +2,6 @@ package com.seletivo.infra.configuration;
 
 import com.seletivo.infra.api.controller.login.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;

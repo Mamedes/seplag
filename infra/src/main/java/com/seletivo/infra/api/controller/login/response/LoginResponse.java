@@ -1,4 +1,4 @@
-package com.seletivo.infra.api.controller.login;
+package com.seletivo.infra.api.controller.login.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
