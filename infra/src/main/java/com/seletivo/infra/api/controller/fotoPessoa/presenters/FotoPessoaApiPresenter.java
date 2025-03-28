@@ -33,7 +33,6 @@ public class FotoPessoaApiPresenter {
             if (presignedUrl != null) {
                 presignedUrl = presignedUrl.replace("http://minio:9000", "http://localhost:9003/minio");
             }
-            System.out.println(presignedUrl);
         } catch (Exception e) {
             e.printStackTrace();
         }
