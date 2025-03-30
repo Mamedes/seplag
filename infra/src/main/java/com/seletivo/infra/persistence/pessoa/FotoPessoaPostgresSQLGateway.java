@@ -42,7 +42,7 @@ public class FotoPessoaPostgresSQLGateway implements FotoPessoaGateway {
 
     @Override
     public FotoPessoa update(FotoPessoa aFotoPessoa) {
-        return null;
+        return save(aFotoPessoa);
     }
 
     @Override

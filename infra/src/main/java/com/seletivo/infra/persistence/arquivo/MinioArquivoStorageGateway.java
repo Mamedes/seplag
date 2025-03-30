@@ -30,4 +30,8 @@ public class MinioArquivoStorageGateway implements ArquivoStorageGateway {
     public void deleteArquivos(List<String> caminhosDestino) throws Exception {
         minioUtils.deleteFiles(minioConfig.getBucketName(), caminhosDestino);
     }
+    @Override
+    public void deleteArquivo(String caminhosDestino) throws Exception {
+        minioUtils.deleteFile(minioConfig.getBucketName(), caminhosDestino);
+    }
 }

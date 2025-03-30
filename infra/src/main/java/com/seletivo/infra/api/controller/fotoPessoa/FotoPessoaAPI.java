@@ -2,6 +2,7 @@ package com.seletivo.infra.api.controller.fotoPessoa;
 
 import com.seletivo.domain.pagination.Pagination;
 import com.seletivo.infra.api.controller.fotoPessoa.request.CreateFotoPessoaRequest;
+import com.seletivo.infra.api.controller.fotoPessoa.request.UpdateFotoPessoaRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -51,6 +52,17 @@ public interface FotoPessoaAPI {
     })
     FotoPessoaResponse getById(@PathVariable(name = "id")  Long id);
 
-
-
+    @PutMapping(
+            value = "{id}",
+            consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    @Operation(summary = "Update a foto pessoa by it's identifier")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Foto Pessoa updated successfully"),
+            @ApiResponse(responseCode = "404", description = "Foto Pessoa was not found"),
+            @ApiResponse(responseCode = "422", description = "A validation error was thrown"),
+            @ApiResponse(responseCode = "500", description = "An internal server error was thrown"),
+    })
+    ResponseEntity<?> updateFotoPessoa(@PathVariable(name = "id") Long id, @ModelAttribute UpdateFotoPessoaRequest input);
 }

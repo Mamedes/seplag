@@ -1,4 +1,4 @@
-package com.seletivo.application.pessoaFoto;
+package com.seletivo.application.pessoaFoto.create;
 
 import com.seletivo.application.arquivo.ArquivoDTO;
 

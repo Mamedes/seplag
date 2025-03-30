@@ -1,6 +1,7 @@
-package com.seletivo.application.pessoaFoto;
+package com.seletivo.application.pessoaFoto.create;
 
 import com.seletivo.application.arquivo.ArquivoDTO;
+import com.seletivo.application.utils.FileUtils;
 import com.seletivo.domain.arquivo.ArquivoStorageGateway;
 import com.seletivo.domain.pessoa.*;
 import com.seletivo.domain.validation.Error;
@@ -8,11 +9,11 @@ import com.seletivo.domain.validation.handler.Notification;
 import io.vavr.control.Either;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 import static io.vavr.API.Left;
 
@@ -22,7 +23,7 @@ public class DefaultCreatePessoaFotoUseCase extends CreatePessoaFotoUseCase {
     private final ArquivoStorageGateway arquivoStorageGateway;
 
     public DefaultCreatePessoaFotoUseCase(final FotoPessoaGateway fotoPessoaGateway,
-            final PessoaGateway pessoaGateway, final ArquivoStorageGateway arquivoStorageGateway) {
+                                          final PessoaGateway pessoaGateway, final ArquivoStorageGateway arquivoStorageGateway) {
         this.fotoPessoaGateway = Objects.requireNonNull(fotoPessoaGateway);
         this.pessoaGateway = Objects.requireNonNull(pessoaGateway);
         this.arquivoStorageGateway = Objects.requireNonNull(arquivoStorageGateway);
@@ -47,9 +48,9 @@ public class DefaultCreatePessoaFotoUseCase extends CreatePessoaFotoUseCase {
         }
         try {
             for (ArquivoDTO arquivoDTO : arquivos) {
-                String randomHash = generateRandomHash();
+                String randomHash = FileUtils.generateRandomHash();
                 String bucketPath =
-                        "foto-" + randomHash + "." + getFileExtension(arquivoDTO.nomeArquivo());
+                        "foto-" + randomHash + "." + FileUtils.getFileExtension(arquivoDTO.nomeArquivo());
 
 
                 final var aFotoPessoa = FotoPessoa.newFotoPessoa(PessoaID.from(pessoaID),
@@ -81,28 +82,5 @@ public class DefaultCreatePessoaFotoUseCase extends CreatePessoaFotoUseCase {
         return Either.right(outputs);
     }
 
-
-    private String generateRandomHash() {
-        try {
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte[] hash = digest.digest(
-                    java.util.UUID.randomUUID().toString().getBytes(StandardCharsets.UTF_8));
-            String base64Hash = Base64.getEncoder().encodeToString(hash);
-
-            return base64Hash.substring(0, Math.min(30, base64Hash.length()))
-                    .replaceAll("[^a-zA-Z0-9]", "");
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException("Error generating hash", e);
-        }
-    }
-
-
-    private String getFileExtension(String fileName) {
-        int dotIndex = fileName.lastIndexOf(".");
-        if (dotIndex == -1 || dotIndex == fileName.length() - 1) {
-            return "";
-        }
-        return fileName.substring(dotIndex + 1);
-    }
 
 }

@@ -1,11 +1,13 @@
 package com.seletivo.infra.configuration.usecases;
 
-import com.seletivo.application.pessoaFoto.CreatePessoaFotoUseCase;
-import com.seletivo.application.pessoaFoto.DefaultCreatePessoaFotoUseCase;
+import com.seletivo.application.pessoaFoto.create.CreatePessoaFotoUseCase;
+import com.seletivo.application.pessoaFoto.create.DefaultCreatePessoaFotoUseCase;
 import com.seletivo.application.pessoaFoto.fetch.DefaultGetPessoaFotoByIdUseCase;
 import com.seletivo.application.pessoaFoto.fetch.GetPessoaFotoByIdUseCase;
 import com.seletivo.application.pessoaFoto.list.DefaultListPessoaFotoUseCase;
 import com.seletivo.application.pessoaFoto.list.ListPessoaFotoUseCase;
+import com.seletivo.application.pessoaFoto.update.DefaultUpdatePessoaFotoUseCase;
+import com.seletivo.application.pessoaFoto.update.UpdatePessoaFotoUseCase;
 import com.seletivo.domain.arquivo.ArquivoStorageGateway;
 import com.seletivo.domain.pessoa.FotoPessoaGateway;
 import com.seletivo.domain.pessoa.PessoaGateway;
@@ -41,5 +43,8 @@ public class FotoPessoaUseCaseConfig {
         return new DefaultGetPessoaFotoByIdUseCase(fotoPessoaGateway);
     }
 
-
+    @Bean
+    public UpdatePessoaFotoUseCase updatePessoaFotoUseCase() {
+        return new DefaultUpdatePessoaFotoUseCase(fotoPessoaGateway, pessoaGateway, arquivoStorageGateway);
+    }
 }

@@ -7,10 +7,10 @@ import com.seletivo.domain.validation.ValidationHandler;
 import java.time.LocalDate;
 
 public class FotoPessoa extends AggregateRoot<FotoPessoaID> implements Cloneable {
-    private final PessoaID pessoaID;
-    private final LocalDate data;
-    private final String bucket;
-    private final String hash;
+    private  PessoaID pessoaID;
+    private  LocalDate data;
+    private  String bucket;
+    private  String hash;
 
     public FotoPessoa(final FotoPessoaID FotoPessoaID, final PessoaID pessoaID, LocalDate data, final String bucket, final String hash) {
         super(FotoPessoaID);
@@ -30,6 +30,19 @@ public class FotoPessoa extends AggregateRoot<FotoPessoaID> implements Cloneable
 
     public static FotoPessoa with(final FotoPessoa aFotoPessoa) {
         return with(aFotoPessoa.id, aFotoPessoa.pessoaID, aFotoPessoa.data, aFotoPessoa.bucket, aFotoPessoa.hash);
+    }
+
+    public FotoPessoa update(
+            final PessoaID aPessoaID,
+            final LocalDate aData,
+            final String aBucket,
+            final String aHash
+    ) {
+        this.pessoaID = aPessoaID;
+        this.data = aData;
+        this.bucket = aBucket;
+        this.hash = aHash;
+        return this;
     }
 
     @Override
