@@ -46,9 +46,9 @@ public class DefaultUpdateServidorEfetivoUseCase extends UpdateServidorEfetivoUs
             return Left(notification);
         }
 
-        final var savedPessoa = pessoaGateway.update(pessoa);
+         pessoaGateway.update(pessoa);
 
-        final var servidorEfetivo = ServidorEfetivo.newServidorEfetivo(savedPessoa.getId(), matricula);
+        final var servidorEfetivo = ServidorEfetivo.newServidorEfetivo(PessoaID.from(servidorId), matricula);
         servidorEfetivo.validate(notification);
 
         return notification.hasError() ? Left(notification) : update(servidorEfetivo, servidorId);
