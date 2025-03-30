@@ -6,6 +6,7 @@ import com.seletivo.domain.exceptions.DomainException;
 import com.seletivo.domain.exceptions.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -35,6 +36,16 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ApiError.from(ex));
     }
 
+    @ExceptionHandler(value = HttpMessageNotReadableException.class)
+    public ResponseEntity<?> handleHttpMessageNotReadableException(final HttpMessageNotReadableException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ApiError.from(ex));
+    }
+
+    @ExceptionHandler(value = NullPointerException.class)
+    public ResponseEntity<?> handleNullPointerException(final NullPointerException ex) {
+        return ResponseEntity.unprocessableEntity().body(ApiError.from(ex));
+    }
+
     record ApiError(String message, List<Error> errors) {
         static ApiError from(final DomainException ex) {
             return new ApiError(ex.getMessage(), ex.getErrors());
@@ -45,5 +56,12 @@ public class GlobalExceptionHandler {
         static ApiError from(final AuthenticationException ex) {
             return new ApiError(ex.getMessage(), null);
         }
+        static ApiError from(final HttpMessageNotReadableException ex) {
+            return new ApiError(ex.getMessage(), null);
+        }
+        static ApiError from(final NullPointerException ex){
+            return new ApiError(ex.getMessage(), null);
+        }
+
     }
 }

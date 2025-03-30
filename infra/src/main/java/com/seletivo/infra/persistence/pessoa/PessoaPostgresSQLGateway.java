@@ -40,7 +40,7 @@ public class PessoaPostgresSQLGateway implements PessoaGateway {
 
     @Override
     public Pessoa update(Pessoa aPessoa) {
-        return null;
+        return save(aPessoa);
     }
 
     @Override
