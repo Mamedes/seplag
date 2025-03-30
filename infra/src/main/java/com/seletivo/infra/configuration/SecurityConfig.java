@@ -52,9 +52,7 @@ public class SecurityConfig  {
     @Bean
     public SecurityFilterChain securityFilterChain(final HttpSecurity http) throws Exception {
         return http
-                .csrf(csrf -> {
-                    csrf.disable();
-                })
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorize -> {
                     authorize
                             .requestMatchers("/auth/**").permitAll()
@@ -66,13 +64,11 @@ public class SecurityConfig  {
                             .requestMatchers(HttpMethod.GET, "/v3/**").permitAll()
                             .anyRequest().authenticated();
                 })
-                .formLogin(f-> f.disable())
-                .httpBasic(h->h.disable())
-                .sessionManagement(s->s.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) .exceptionHandling(ex -> ex
-                        .authenticationEntryPoint(customAuthenticationEntryPoint)
-                        .accessDeniedHandler(customAccessDeniedHandler)
-                )
+                .formLogin(f -> f.disable())
+                .httpBasic(h -> h.disable())
+                .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .exceptionHandling(exceptionHandling -> exceptionHandling.authenticationEntryPoint(new CustomAuthenticationEntryPoint()))
                 .build();
     }
 
