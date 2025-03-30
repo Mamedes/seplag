@@ -42,8 +42,8 @@ public class ServidorTemporarioPostgresSQLGateway implements ServidorTemporarioG
     }
 
     @Override
-    public ServidorTemporario update(ServidorTemporario aPessoa) {
-        return null;
+    public ServidorTemporario update(ServidorTemporario aServidorTemporario) {
+        return save(aServidorTemporario);
     }
 
     @Override

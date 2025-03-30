@@ -9,13 +9,13 @@ import java.util.Optional;
 
 public interface ServidorTemporarioGateway {
 
-    ServidorTemporario create(ServidorTemporario aPessoa);
+    ServidorTemporario create(ServidorTemporario aServidorTemporario);
 
     void deleteById(PessoaID anId);
 
     Optional<ServidorTemporario> findById(PessoaID anId);
 
-    ServidorTemporario update(ServidorTemporario aPessoa);
+    ServidorTemporario update(ServidorTemporario aServidorTemporario);
 
     Pagination<ServidorTemporario> findAll(SearchQuery aQuery);
 

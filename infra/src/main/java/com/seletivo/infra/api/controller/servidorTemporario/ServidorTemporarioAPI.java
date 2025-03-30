@@ -1,6 +1,7 @@
 package com.seletivo.infra.api.controller.servidorTemporario;
 
 import com.seletivo.infra.api.controller.servidorTemporario.request.CreateServidorTemporarioRequest;
+import com.seletivo.infra.api.controller.servidorTemporario.request.UpdateServidorTemporarioRequest;
 import com.seletivo.infra.api.controller.servidorTemporario.response.ServidorTemporarioResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -48,6 +49,15 @@ public interface ServidorTemporarioAPI {
                                         description = "An internal server error was thrown"),})
         void deleteById(@PathVariable(name = "id") Long id);
 
-
+        @PutMapping(value = "{id}", consumes = MediaType.APPLICATION_JSON_VALUE,
+                produces = MediaType.APPLICATION_JSON_VALUE)
+        @Operation(summary = "Update a Servidor Temporario by it's identifier")
+        @ApiResponses(value = {
+                @ApiResponse(responseCode = "200", description = "Updated successfully"),
+                @ApiResponse(responseCode = "404", description = "Servidor Temporario was not found"),
+                @ApiResponse(responseCode = "422", description = "A validation error was thrown"),
+                @ApiResponse(responseCode = "500", description = "An internal server error was thrown"),
+        })
+        ResponseEntity<?> updateServidorTemporario(@PathVariable(name = "id") Long id, @RequestBody UpdateServidorTemporarioRequest input);
 
 }

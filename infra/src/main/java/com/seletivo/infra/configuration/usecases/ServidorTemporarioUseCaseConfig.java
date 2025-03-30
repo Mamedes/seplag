@@ -6,6 +6,8 @@ import com.seletivo.application.servidorTemporario.delete.DefaultDeleteServidorT
 import com.seletivo.application.servidorTemporario.delete.DeleteServidorTemporarioUseCase;
 import com.seletivo.application.servidorTemporario.fetch.DefaultGetServidorTemporarioByIdUseCase;
 import com.seletivo.application.servidorTemporario.fetch.GetServidorTemporarioByIdUseCase;
+import com.seletivo.application.servidorTemporario.update.DefaultUpdateServidorTemporarioUseCase;
+import com.seletivo.application.servidorTemporario.update.UpdateServidorTemporarioUseCase;
 import com.seletivo.domain.pessoa.PessoaGateway;
 import com.seletivo.domain.servidorTemporario.ServidorTemporarioGateway;
 import org.springframework.context.annotation.Bean;
@@ -34,6 +36,12 @@ public class ServidorTemporarioUseCaseConfig {
     public DeleteServidorTemporarioUseCase deleteServidorTemporarioUseCase() {
         return new DefaultDeleteServidorTemporarioUseCase(servidorTemporarioGateway);
     }
+
+    @Bean
+    public UpdateServidorTemporarioUseCase updateServidorTemporarioUseCase() {
+        return new DefaultUpdateServidorTemporarioUseCase(servidorTemporarioGateway,pessoaGateway);
+    }
+
 
 
 
