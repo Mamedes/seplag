@@ -15,7 +15,7 @@ public record UpdateLotacaoRequest(
         LocalDate dataLotacao,
         @JsonProperty("dataRemocao")
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy") LocalDate dataRemocao,
-        @JsonProperty("portaria") Long portaria
+        @JsonProperty("portaria") String portaria
 
 ) {
 }

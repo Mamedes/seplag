@@ -3,6 +3,7 @@ package com.seletivo.infra.api.controller.lotacao;
 
 import com.seletivo.infra.api.controller.lotacao.request.CreateLotacaoRequest;
 import com.seletivo.infra.api.controller.lotacao.request.LotacaoResponse;
+import com.seletivo.infra.api.controller.lotacao.request.UpdateLotacaoRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -36,19 +37,17 @@ public interface LotacaoAPI {
                                         description = "An internal server error was thrown"),})
         LotacaoResponse getById(@PathVariable(name = "id") Long id);
 
-        // @PutMapping(
-        // value = "{id}",
-        // consumes = MediaType.APPLICATION_JSON_VALUE,
-        // produces = MediaType.APPLICATION_JSON_VALUE
-        // )
-        // @Operation(summary = "Update a lotacao by it's identifier")
-        // @ApiResponses(value = {
-        // @ApiResponse(responseCode = "200", description = "Lotacao updated successfully"),
-        // @ApiResponse(responseCode = "404", description = "Lotacao was not found"),
-        // @ApiResponse(responseCode = "500", description = "An internal server error was thrown"),
-        // })
-        // ResponseEntity<?> updateById(@PathVariable(name = "id") Long id, @RequestBody
-        // UpdateLotacaoRequest input);
+        @PutMapping(value = "{id}", consumes = MediaType.APPLICATION_JSON_VALUE,
+                produces = MediaType.APPLICATION_JSON_VALUE)
+        @Operation(summary = "Update a lotacao by it's identifier")
+        @ApiResponses(value = {
+                @ApiResponse(responseCode = "200", description = "Lotacao updated successfully"),
+                @ApiResponse(responseCode = "404", description = "Lotacao was not found"),
+                @ApiResponse(responseCode = "422", description = "A validation error was thrown"),
+                @ApiResponse(responseCode = "500", description = "An internal server error was thrown"),
+        })
+        ResponseEntity<?> updateLotacao(@PathVariable(name = "id") Long id, @RequestBody UpdateLotacaoRequest input);
+
 
 
         @DeleteMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)

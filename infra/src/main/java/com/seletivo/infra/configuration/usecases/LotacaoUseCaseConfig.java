@@ -1,5 +1,7 @@
 package com.seletivo.infra.configuration.usecases;
 
+import com.seletivo.application.lotacao.update.DefaultUpdateLotacaoUseCase;
+import com.seletivo.application.lotacao.update.UpdateLotacaoUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import com.seletivo.application.lotacao.create.CreateLotacaoUseCase;
@@ -35,5 +37,9 @@ public class LotacaoUseCaseConfig {
         return new DefaultDeleteLotacaoCase(lotacaoGateway);
     }
 
+    @Bean
+    public UpdateLotacaoUseCase updateLotacaoByIdUseCase() {
+        return new DefaultUpdateLotacaoUseCase(lotacaoGateway);
+    }
 
 }

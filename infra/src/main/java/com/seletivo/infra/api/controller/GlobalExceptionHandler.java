@@ -4,6 +4,10 @@ package com.seletivo.infra.api.controller;
 
 import com.seletivo.domain.exceptions.DomainException;
 import com.seletivo.domain.exceptions.NotFoundException;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
+import org.springframework.dao.TransientDataAccessResourceException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -13,6 +17,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import com.seletivo.domain.validation.Error;
 
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 @RestControllerAdvice
@@ -45,6 +51,37 @@ public class GlobalExceptionHandler {
     public ResponseEntity<?> handleNullPointerException(final NullPointerException ex) {
         return ResponseEntity.unprocessableEntity().body(ApiError.from(ex));
     }
+    @ExceptionHandler(value = DataIntegrityViolationException.class)
+    public ResponseEntity<?> handleDataIntegrityViolationException(final DataIntegrityViolationException ex) {
+        return ResponseEntity.badRequest().body(ApiError.from(ex));
+    }
+
+    @ExceptionHandler(value = EmptyResultDataAccessException.class)
+    public ResponseEntity<?> handleEmptyResultDataAccessException(final EmptyResultDataAccessException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ApiError.from(ex));
+    }
+
+    @ExceptionHandler(value = InvalidDataAccessApiUsageException.class)
+    public ResponseEntity<?> handleInvalidDataAccessApiUsageException(final InvalidDataAccessApiUsageException ex) {
+        return ResponseEntity.badRequest().body(ApiError.from(ex));
+    }
+
+    @ExceptionHandler(value = TransientDataAccessResourceException.class)
+    public ResponseEntity<?> handleTransientDataAccessResourceException(final TransientDataAccessResourceException ex) {
+        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(ApiError.from(ex));
+    }
+
+    @ExceptionHandler(value = SQLException.class)
+    public ResponseEntity<?> handleSQLException(final SQLException ex) {
+        // Trata exceções SQL genéricas
+        // Você pode verificar o SQLState ou o código de erro para tratamento mais específico
+        return ResponseEntity.internalServerError().body(ApiError.from(ex));
+    }
+
+    @ExceptionHandler(value = SQLIntegrityConstraintViolationException.class)
+    public ResponseEntity<?> handleSQLIntegrityConstraintViolationException(final SQLIntegrityConstraintViolationException ex) {
+        return ResponseEntity.badRequest().body(ApiError.from(ex));
+    }
 
     record ApiError(String message, List<Error> errors) {
         static ApiError from(final DomainException ex) {
@@ -62,6 +99,28 @@ public class GlobalExceptionHandler {
         static ApiError from(final NullPointerException ex){
             return new ApiError(ex.getMessage(), null);
         }
+        static ApiError from(final DataIntegrityViolationException ex) {
+            return new ApiError(ex.getMessage(), null);
+        }
 
+        static ApiError from(final EmptyResultDataAccessException ex) {
+            return new ApiError(ex.getMessage(), null);
+        }
+
+        static ApiError from(final InvalidDataAccessApiUsageException ex) {
+            return new ApiError(ex.getMessage(), null);
+        }
+
+        static ApiError from(final TransientDataAccessResourceException ex) {
+            return new ApiError(ex.getMessage(), null);
+        }
+
+        static ApiError from(final SQLException ex) {
+            return new ApiError(ex.getMessage(), null);
+        }
+
+        static ApiError from(final SQLIntegrityConstraintViolationException ex) {
+            return new ApiError(ex.getMessage(), null);
+        }
     }
 }
