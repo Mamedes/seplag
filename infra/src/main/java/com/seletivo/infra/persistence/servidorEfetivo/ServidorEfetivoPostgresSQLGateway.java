@@ -50,10 +50,9 @@ public class ServidorEfetivoPostgresSQLGateway implements ServidorEfetivoGateway
     }
 
     @Override
-    public ServidorEfetivo update(ServidorEfetivo aPessoa) {
-        return null;
+    public ServidorEfetivo update(ServidorEfetivo aServidorEfetivo) {
+        return save(aServidorEfetivo);
     }
-
     @Override
     public Pagination<ServidorEfetivo> findAll(SearchQuery aQuery) {
         return null;

@@ -3,6 +3,12 @@ package com.seletivo.infra.api.controller.servidorEfetivo;
 import java.net.URI;
 import java.util.Objects;
 import java.util.function.Function;
+
+import com.seletivo.application.pessoa.update.UpdatePessoaCommand;
+import com.seletivo.application.servidorEfetivo.update.UpdateServidorEfetivoCommand;
+import com.seletivo.application.servidorEfetivo.update.UpdateServidorEfetivoOutput;
+import com.seletivo.application.servidorEfetivo.update.UpdateServidorEfetivoUseCase;
+import com.seletivo.infra.api.controller.servidorEfetivo.request.UpdateServidorEfetivoRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import com.seletivo.application.pessoa.create.CreatePessoaCommand;
@@ -33,6 +39,7 @@ public class ServidorEfetivoController implements ServidorEfetivoAPI {
     private final ListServidorEfetivoByUnidadeUseCase listServidorEfetivoByUnidadeUseCase;
     private final ServidorListByUnidadeApiPresenter servidorEfetivoApiPresenter;
     private final DeleteServidorEfetivoUseCase deleteServidorEfetivoUseCase;
+    private final UpdateServidorEfetivoUseCase updateServidorEfetivoUseCase;
 
 
 
@@ -42,7 +49,8 @@ public class ServidorEfetivoController implements ServidorEfetivoAPI {
             final SearchServidorEnderecoUseCase searchServidorEnderecoUseCase,
             final ListServidorEfetivoByUnidadeUseCase listServidorEfetivoByUnidadeUseCase,
             ServidorListByUnidadeApiPresenter servidorEfetivoApiPresenter,
-            final DeleteServidorEfetivoUseCase deleteServidorEfetivoUseCase) {
+            final DeleteServidorEfetivoUseCase deleteServidorEfetivoUseCase,
+            final UpdateServidorEfetivoUseCase updateServidorEfetivoUseCase) {
 
         this.createServidorEfetivoUseCase = Objects.requireNonNull(createServidorEfetivoUseCase);
         this.getServidorEfetivoByIdUseCase = Objects.requireNonNull(getServidorEfetivoByIdUseCase);
@@ -51,7 +59,7 @@ public class ServidorEfetivoController implements ServidorEfetivoAPI {
                 Objects.requireNonNull(listServidorEfetivoByUnidadeUseCase);
         this.servidorEfetivoApiPresenter = servidorEfetivoApiPresenter;
         this.deleteServidorEfetivoUseCase = Objects.requireNonNull(deleteServidorEfetivoUseCase);
-
+        this.updateServidorEfetivoUseCase = Objects.requireNonNull(updateServidorEfetivoUseCase);
     }
 
     public ResponseEntity<?> createServidorEfetivo(final CreateServidorEfetivoRequest request) {
@@ -97,5 +105,23 @@ public class ServidorEfetivoController implements ServidorEfetivoAPI {
     @Override
     public void deleteById(Long id) {
         this.deleteServidorEfetivoUseCase.execute(id);
+    }
+
+    @Override
+    public ResponseEntity<?> updateServidorEfetivo(final Long id, final UpdateServidorEfetivoRequest request){
+        final var pessoaCommand = UpdatePessoaCommand.with(id, request.pessoa().nome(),
+                request.pessoa().dataNascimento(), request.pessoa().sexo(),
+                request.pessoa().nomeMae(), request.pessoa().nomePai());
+
+        final var command = UpdateServidorEfetivoCommand.with(id,request.matricula(), pessoaCommand);
+
+        final Function<Notification, ResponseEntity<?>> onError =
+                notification -> ResponseEntity.unprocessableEntity().body(notification);
+
+        final Function<UpdateServidorEfetivoOutput, ResponseEntity<?>> onSuccess =
+                output -> ResponseEntity.ok(output);
+
+        return this.updateServidorEfetivoUseCase.execute(command).fold(onError, onSuccess);
+
     }
 }

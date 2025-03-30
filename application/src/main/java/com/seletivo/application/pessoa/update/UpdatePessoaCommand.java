@@ -3,7 +3,7 @@ package com.seletivo.application.pessoa.update;
 import java.time.LocalDate;
 
 public record UpdatePessoaCommand(
-        String id,
+        Long id,
         String nome,
         LocalDate dataNascimento,
         String sexo,
@@ -12,7 +12,7 @@ public record UpdatePessoaCommand(
 ) {
 
     public static UpdatePessoaCommand with(
-            final String anId,
+            final Long anId,
             final String nome,
             final LocalDate dataNascimento,
             final String sexo,

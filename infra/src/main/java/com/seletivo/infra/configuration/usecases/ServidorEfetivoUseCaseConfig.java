@@ -10,6 +10,8 @@ import com.seletivo.application.servidorEfetivo.fetch.custom.DefaultListServidor
 import com.seletivo.application.servidorEfetivo.fetch.custom.DefaultSearchServidorEnderecoUseCase;
 import com.seletivo.application.servidorEfetivo.fetch.custom.ListServidorEfetivoByUnidadeUseCase;
 import com.seletivo.application.servidorEfetivo.fetch.custom.SearchServidorEnderecoUseCase;
+import com.seletivo.application.servidorEfetivo.update.DefaultUpdateServidorEfetivoUseCase;
+import com.seletivo.application.servidorEfetivo.update.UpdateServidorEfetivoUseCase;
 import com.seletivo.domain.pessoa.PessoaGateway;
 import com.seletivo.domain.servidorEfetivo.ServidorEfetivoGateway;
 import org.springframework.context.annotation.Bean;
@@ -52,6 +54,11 @@ public class ServidorEfetivoUseCaseConfig {
     @Bean
     public DeleteServidorEfetivoUseCase deleteServidorEfetivoByUnidadeUseCase() {
         return new DefaultDeleteServidorEfetivoUseCase(servidorEfetivoGateway);
+    }
+
+    @Bean
+    public UpdateServidorEfetivoUseCase updateServidorEfetivoByUnidadeUseCase() {
+        return new DefaultUpdateServidorEfetivoUseCase(servidorEfetivoGateway,pessoaGateway);
     }
 
 }

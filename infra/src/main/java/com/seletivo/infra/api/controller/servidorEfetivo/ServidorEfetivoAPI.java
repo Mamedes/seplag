@@ -2,6 +2,7 @@ package com.seletivo.infra.api.controller.servidorEfetivo;
 
 import com.seletivo.domain.pagination.Pagination;
 import com.seletivo.infra.api.controller.servidorEfetivo.request.CreateServidorEfetivoRequest;
+import com.seletivo.infra.api.controller.servidorEfetivo.request.UpdateServidorEfetivoRequest;
 import com.seletivo.infra.api.controller.servidorEfetivo.response.ServidorEfetivoByUnidadeResponse;
 import com.seletivo.infra.api.controller.servidorEfetivo.response.ServidorEfetivoResponse;
 import com.seletivo.infra.api.controller.servidorEfetivo.response.ServidorEnderecoResponse;
@@ -94,4 +95,14 @@ public interface ServidorEfetivoAPI {
                         @ApiResponse(responseCode = "500",
                                         description = "An internal server error was thrown"),})
         void deleteById(@PathVariable(name = "id") Long id);
+        @PutMapping(value = "{id}", consumes = MediaType.APPLICATION_JSON_VALUE,
+                produces = MediaType.APPLICATION_JSON_VALUE)
+        @Operation(summary = "Update a Servidor Efetivo by it's identifier")
+        @ApiResponses(value = {
+                @ApiResponse(responseCode = "200", description = "Updated successfully"),
+                @ApiResponse(responseCode = "404", description = "Servidor Efetivo was not found"),
+                @ApiResponse(responseCode = "422", description = "A validation error was thrown"),
+                @ApiResponse(responseCode = "500", description = "An internal server error was thrown"),
+        })
+        ResponseEntity<?> updateServidorEfetivo(@PathVariable(name = "id") Long id, @RequestBody UpdateServidorEfetivoRequest input);
 }
