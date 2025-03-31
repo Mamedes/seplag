@@ -99,7 +99,7 @@ public class ServidorEfetivoPostgresSQLGateway implements ServidorEfetivoGateway
 
         List<ServidorEfetivoPorUnidade> outputs = page.getContent().stream()
                 .map(projection -> new ServidorEfetivoPorUnidade(projection.getNome(),
-                        projection.getDataNascimento(), projection.getNomeUnidade(),
+                        projection.getIdade(), projection.getNomeUnidade(),
                         projection.getBucketFoto()))
                 .collect(Collectors.toList());
 

@@ -23,7 +23,7 @@ public class DefaultListServidorEfetivoByUnidadeUseCase
         return this.servidorEfetivoGateway.findServidoresByUnidade(searchQuery, unidadeId)
                 .map(servidorEfetivoPorUnidade -> new ServidorEfetivoByUnidadeOutput(
                         servidorEfetivoPorUnidade.nome(),
-                        servidorEfetivoPorUnidade.dataNascimento(),
+                        servidorEfetivoPorUnidade.idade(),
                         servidorEfetivoPorUnidade.nomeUnidade(),
                         servidorEfetivoPorUnidade.bucketFoto()));
     }

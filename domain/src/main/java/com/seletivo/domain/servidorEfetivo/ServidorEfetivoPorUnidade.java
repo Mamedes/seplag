@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public record ServidorEfetivoPorUnidade(
         String nome,
-        LocalDate dataNascimento,
+        Integer idade,
         String nomeUnidade,
         String bucketFoto
 ) {

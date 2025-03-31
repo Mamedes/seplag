@@ -40,7 +40,7 @@ public class ServidorListByUnidadeApiPresenter {
 
         return new ServidorEfetivoByUnidadeResponse(
                 output.nome(),
-                output.dataNascimento(),
+                output.idade(),
                 output.nomeUnidade(),
                 presignedUrl
         );
