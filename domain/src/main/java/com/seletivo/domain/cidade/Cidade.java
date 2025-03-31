@@ -5,8 +5,8 @@ import com.seletivo.domain.pessoa.PessoaID;
 import com.seletivo.domain.validation.ValidationHandler;
 
 public class Cidade extends AggregateRoot<CidadeID> implements Cloneable{
-    private final String nome;
-    private final String uf;
+    private  String nome;
+    private  String uf;
 
     public Cidade(final CidadeID id, final String nome, final String uf) {
         super(id);
@@ -14,7 +14,7 @@ public class Cidade extends AggregateRoot<CidadeID> implements Cloneable{
         this.uf = uf;
     }
 
-    public Cidade newCidade( final String nome, final String uf) {
+    public static  Cidade newCidade( final String nome, final String uf) {
         return new Cidade(null, nome, uf);
     }
 
@@ -26,6 +26,11 @@ public class Cidade extends AggregateRoot<CidadeID> implements Cloneable{
         return with(aCidade.getId(), aCidade.nome, aCidade.uf);
     }
 
+    public Cidade update(final String aNome, final String aUf) {
+        this.nome = aNome;
+        this.uf = aUf;
+        return this;
+    }
     @Override
     public void validate(ValidationHandler handler) {
 
