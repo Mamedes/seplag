@@ -32,7 +32,7 @@ public class ServidorListByUnidadeApiPresenter {
                             .expiry(5, TimeUnit.MINUTES)
                             .build());
             if (presignedUrl != null) {
-                presignedUrl = presignedUrl.replace("http://minio:9000", "http://localhost:9003");
+                presignedUrl = presignedUrl.replace("http://minio:9000", "http://localhost:9003/minio");
             }
         } catch (Exception e) {
             e.printStackTrace();
