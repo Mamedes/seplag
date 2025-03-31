@@ -1,0 +1,1247 @@
+{
+	"info": {
+		"_postman_id": "09cb5156-d869-4468-99cd-6467335072c4",
+		"name": "seletivo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12861167",
+		"_collection_link": "https://warped-astronaut-275001.postman.co/workspace/Eron~3e5beff1-dd35-4186-b4f1-d4f3f2fa9ea8/collection/12861167-09cb5156-d869-4468-99cd-6467335072c4?action=share&source=collection_link&creator=12861167"
+	},
+	"item": [
+		{
+			"name": "Unidade",
+			"item": [
+				{
+					"name": "createUnidade",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0MzQ0NzI5NywiZXhwIjoxNzQzNDQ3NTk3fQ.aekaQY0etiUYrbHnFpyj7QQN0G04fW1kbEJLvfIIbjk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"SECREATARIA DE PLANEJAMENTO\",\r\n    \"sigla\": \"SEPLAG-MT\",\r\n    \"enderecoIds\":[5000]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/unidade",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"unidade"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUnidade",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"SECREATARIA DE PLANEJAMENTO\",\r\n    \"sigla\": \"SEPLAG-MT\",\r\n    \"enderecos\":[1]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/unidade/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"unidade",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUnidade all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"SECREATARIA DE PLANEJAMENTO\",\r\n    \"sigla\": \"SEPLAG-MT\",\r\n    \"enderecos\":[1]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/unidade",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"unidade"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUnidade",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"SINFRA\",\r\n    \"sigla\": \"SINFRA\",\r\n    \"enderecoIds\":[5000]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/unidade/3000",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"unidade",
+								"3000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUnidade",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"SINFRA\",\r\n    \"sigla\": \"SINFRA\",\r\n    \"enderecoIds\":[5000]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/unidade/3000",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"unidade",
+								"3000"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "endereco",
+			"item": [
+				{
+					"name": "createEndereco",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0MzQ0NzI5NywiZXhwIjoxNzQzNDQ3NTk3fQ.aekaQY0etiUYrbHnFpyj7QQN0G04fW1kbEJLvfIIbjk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"tipoLogradouro\": \"valor_tipoLogradouro\",\r\n  \"logradouro\": \"valor_logradouro\",\r\n  \"numero\": 100,\r\n  \"bairro\": \"valor_bairro\",\r\n  \"cidadeId\":100\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/endereco",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"endereco"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetEndereco",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"SECREATARIA DE PLANEJAMENTO\",\r\n    \"sigla\": \"SEPLAG-MT\",\r\n    \"enderecos\":[1]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/endereco/5001",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"endereco",
+								"5001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateEndereco",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"tipoLogradouro\": \"Neew valor_tipoLogradouro\",\r\n  \"logradouro\": \"new valor_logradouro\",\r\n  \"numero\": 101,\r\n  \"bairro\": \"nw valor_bairro\",\r\n  \"cidadeId\":999\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/endereco/5001",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"endereco",
+								"5001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteEndereco",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/endereco/5001",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"endereco",
+								"5001"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Servidor",
+			"item": [
+				{
+					"name": "efe",
+					"item": [
+						{
+							"name": "/servidor-efetivo",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0MzM0ODA3MCwiZXhwIjoxNzQzMzc4MDcwfQ.1UacKps33_S0nlU6JjhuoEJXi8wil6boXUs0qtvd2eY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"matricula\": \"104972\",\r\n    \"pessoa\": {\r\n         \"id\": 1000,\r\n        \"nome\": \"Mamedes Junior 22\",\r\n        \"dataNascimento\": \"20/04/1992\",\r\n        \"sexo\": \"M\",\r\n        \"nomeMae\": \"Mãe J\",\r\n        \"nomePai\": \"Pai\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/servidor-efetivo/1000",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"servidor-efetivo",
+										"1000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "servidor",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0MzM0Nzc4MSwiZXhwIjoxNzQzMzc3NzgxfQ.UAFFsaSplyH9n3LK4gO1UiKJBnxZaUP8q3tpRbXBFDg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/pessoa/1000",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pessoa",
+										"1000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "servidor efetivo",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/servidor-efetivo/1000",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"servidor-efetivo",
+										"1000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "endereco funcional",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0MzQ0NzI5NywiZXhwIjoxNzQzNDQ3NTk3fQ.aekaQY0etiUYrbHnFpyj7QQN0G04fW1kbEJLvfIIbjk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/junio/OneDrive/Imagens/Captura de tela 2025-03-15 142027.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/servidor-efetivo/search?page=0&perPage=10&nome=",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"servidor-efetivo",
+										"search"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "sort",
+											"value": "asc",
+											"disabled": true
+										},
+										{
+											"key": "direction",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "perPage",
+											"value": "10"
+										},
+										{
+											"key": "nome",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "efetivo-unidade",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0MzQ0NzI5NywiZXhwIjoxNzQzNDQ3NTk3fQ.aekaQY0etiUYrbHnFpyj7QQN0G04fW1kbEJLvfIIbjk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/junio/OneDrive/Imagens/Captura de tela 2025-03-15 142027.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/servidor-efetivo/unidade/3000?page=0&perPage=10&nome=",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"servidor-efetivo",
+										"unidade",
+										"3000"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "sort",
+											"value": "asc",
+											"disabled": true
+										},
+										{
+											"key": "direction",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "perPage",
+											"value": "10"
+										},
+										{
+											"key": "nome",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/servidor-efetivo",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0MzQ0NzEzNSwiZXhwIjoxNzQzNDQ3NDM1fQ.WzsOKdsu7851SSLJEZMhZropbUER5dEbn3TUFwcdj3A",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"matricula\": \"104972\",\r\n    \"pessoa\": {\r\n         \"id\": 1000,\r\n        \"nome\": \"Mamedes Junior\",\r\n        \"dataNascimento\": \"20/04/1992\",\r\n        \"sexo\": \"M\",\r\n        \"nomeMae\": \"Mãe J\",\r\n        \"nomePai\": \"Pai\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/servidor-efetivo",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"servidor-efetivo"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "temp",
+					"item": [
+						{
+							"name": "servidor-temporario",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/servidor-temporario/1003",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"servidor-temporario",
+										"1003"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "servidor-temporario",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0MzM2MDA1NSwiZXhwIjoxNzQzMzYwMzU1fQ.VkVy00wJT4Vi6sTBeKkNSENNmVSXxTWkB5hGUtqXdz8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"dataAdmissao\":\"20/04/1991\",\r\n    \"dataDemissao\": \"20/01/2025\",\r\n    \"pessoa\": {\r\n        \"nome\": \"Eduardo Junior\",\r\n        \"dataNascimento\": \"20/04/1991\",\r\n        \"sexo\": \"M\",\r\n        \"nomeMae\": \"Mãe J\",\r\n        \"nomePai\": \"Pai\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/servidor-temporario",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"servidor-temporario"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "servidor-temporario",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/servidor-temporario/1001",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"servidor-temporario",
+										"1001"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/servidor-efetivo",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0MzM2MDM3MCwiZXhwIjoxNzQzMzYwNjcwfQ.CK9krM-muxKkqCpTATJ5jq_tpJmWcVIgFt-TB4GwFtY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"dataAdmissao\":\"20/04/1992\",\r\n    \"dataDemissao\": \"20/01/2024\",\r\n    \"pessoa\": {\r\n        \"nome\": \"Eduardo Junior alter\",\r\n        \"dataNascimento\": \"20/04/1992\",\r\n        \"sexo\": \"M\",\r\n        \"nomeMae\": \"Mãe alter\",\r\n        \"nomePai\": \"Pai alter\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/servidor-temporario/1002",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"servidor-temporario",
+										"1002"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "lotacao",
+			"item": [
+				{
+					"name": "lotacao",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0MzQ0NzI5NywiZXhwIjoxNzQzNDQ3NTk3fQ.aekaQY0etiUYrbHnFpyj7QQN0G04fW1kbEJLvfIIbjk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"pessoaId\": 1000,\r\n  \"unidadeId\": 3000,\r\n  \"dataLotacao\": \"15/10/2023\",\r\n  \"dataRemocao\": \"20/12/2023\",\r\n  \"portaria\": \"Portaria 789/2023\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/lotacao",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lotacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "lotacao",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0MzM2MzYzMCwiZXhwIjoxNzQzMzYzOTMwfQ.A6fW6bzWcbzAPIADXupn8jE9EButqy3cx6MW2zn9WQ8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"pessoaId\": 1002,\r\n  \"unidadeId\": 3000,\r\n  \"dataLotacao\": \"15/10/2024\",\r\n  \"dataRemocao\": \"20/12/2024\",\r\n  \"portaria\": \"Portaria 788/2024\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/lotacao/6000",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lotacao",
+								"6000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "lotacao",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/lotacao/6001",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lotacao",
+								"6001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteLotacao",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/lotacao/6005",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"lotacao",
+								"6005"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "foto",
+			"item": [
+				{
+					"name": "imagem get all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/junio/OneDrive/Imagens/Captura de tela 2025-03-15 142027.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/foto-pessoa?page=1&perPage=10",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"foto-pessoa"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "perPage",
+									"value": "10"
+								},
+								{
+									"key": "search",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "asc",
+									"disabled": true
+								},
+								{
+									"key": "direction",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "imagem get by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0MzA4MTI0MywiZXhwIjoxNzQzMDgxNTQzfQ.8jN_Y_V5ihV5P-ykc13sNuU5ORjXv-WRXGYAXW8h8zA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/junio/OneDrive/Imagens/Captura de tela 2025-03-15 142027.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/foto-pessoa/2003",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"foto-pessoa",
+								"2003"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "asc",
+									"disabled": true
+								},
+								{
+									"key": "direction",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "foto imagem",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0MzQ0NzEzNSwiZXhwIjoxNzQzNDQ3NDM1fQ.WzsOKdsu7851SSLJEZMhZropbUER5dEbn3TUFwcdj3A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "pessoaID",
+									"value": "1000",
+									"type": "text"
+								},
+								{
+									"key": "files",
+									"type": "file",
+									"src": "BJA5gNnZt/Captura de tela 2025-02-14 145016.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/foto-pessoa",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"foto-pessoa"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cidade",
+			"item": [
+				{
+					"name": "cidade-list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0MzQzMjMzOCwiZXhwIjoxNzQzNDMyNjM4fQ.AJfqrDSNcT1S616gSqkcQiXumu3iDJEnl8gIU9jEgr0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/cidade?page=0&perPage=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cidade"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "perPage",
+									"value": "10"
+								},
+								{
+									"key": "search",
+									"value": "cui",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cidade",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0MzQ0NTUxMCwiZXhwIjoxNzQzNDQ1ODEwfQ.mWYerY87EoS7zh-007N8EVYxx7XngKM2HNm-iTtb1EA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/cidade/5566",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cidade",
+								"5566"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "cui",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cidade",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0MzQ0NDcwMiwiZXhwIjoxNzQzNDQ1MDAyfQ.6WPcx0VOfvUDDKjvrM1GJmh0Z40BMtVF2n0GPjzHr5c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/cidade/5565",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cidade",
+								"5565"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "cui",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cidade",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0MzQ0NTUxMCwiZXhwIjoxNzQzNDQ1ODEwfQ.mWYerY87EoS7zh-007N8EVYxx7XngKM2HNm-iTtb1EA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"nova-nazare 5477\",\r\n    \"uf\": \"MT\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cidade",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cidade"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cidade",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0MzQ0NTk2OSwiZXhwIjoxNzQzNDQ2MjY5fQ.jlf66nKe3a-fafh9hr5AWwJzEE3pyNUeTWlnGYYI7eg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"nova-nazare 2\",\r\n    \"uf\": \"MT\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cidade/5566",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cidade",
+								"5566"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "createPessoa",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Mamede  E. Castro Junior\",\r\n    \"dataNascimento\": \"20/04/1994\",\r\n    \"sexo\": \"M\",\r\n    \"nomeMae\":\"Gasparina\",\r\n    \"nomePai\":\"Mamedes\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/pessoa",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pessoa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"login\": \"admin\",\r\n  \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

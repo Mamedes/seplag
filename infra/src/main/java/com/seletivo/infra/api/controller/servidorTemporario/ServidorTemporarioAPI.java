@@ -36,7 +36,7 @@ public interface ServidorTemporarioAPI {
                                               "matricula": "123456",
                                               "pessoa": {
                                                 "nome": "João Silva",
-                                                "dataNascimento": "2025-03-31",
+                                                "dataNascimento": "10/10/1994",
                                                 "sexo": "Masculino",
                                                 "nomeMae": "Maria da Silva",
                                                 "nomePai": "José da Silva"
@@ -82,7 +82,32 @@ public interface ServidorTemporarioAPI {
 
     @PutMapping(value = "{id}", consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    @Operation(summary = "Update a Servidor Temporario by it's identifier")
+    @Operation(
+            summary = "Atualizar um Servidor Temporário pelo seu identificador",
+            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
+                    required = true,
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = UpdateServidorTemporarioRequest.class),
+                            examples = @ExampleObject(
+                                    name = "Exemplo de Atualização",
+                                    value = """
+                    {
+                        "dataAdmissao": "01/04/2024",
+                        "dataDemissao": "30/12/2024",
+                        "pessoa": {
+                            "nome": "João Silva Atualizado",
+                             "dataNascimento": "10/10/1994",
+                            "sexo": "Masculino",
+                            "nomeMae": "Maria da Silva Atualizado",
+                            "nomePai": "José da Silva Atualizado"
+                        }
+                    }
+                    """
+                            )
+                    )
+            )
+    )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Updated successfully"),
             @ApiResponse(responseCode = "404", description = "Servidor Temporario was not found"),

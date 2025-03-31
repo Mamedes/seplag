@@ -1,13 +1,15 @@
   - INSCRIÇÃO 8312 8308
-    - [Download](#download)
-    - [Execução](#execução)
-- [api](#swagger)
+- [Download](#download)
+- [Execução](#execução)
+- [API (Swagger)](#swagger)
+- [Postman](#postman)
+- [Formato de Data](#formato-de-data)
 ### Download
 
 1. Clone o projeto
 
 ```shellscript
-$ git clone https://github.com/Mamedes/seplag.git
+$ git clone [https://github.com/Mamedes/seplag.git](https://github.com/Mamedes/seplag.git)
 $ cd seplag
 ```
 
@@ -26,3 +28,13 @@ docker-compose up
 ```shellscript
 http://localhost:8080/swagger-ui/index.html
 ```
+> Obs.: Collection do Postam na pasta postman
+```shellscript
+$ cd postman
+```
+
+4. Formato das datas  
+```shellscript
+dd/MM/yyyy 
+```
+
